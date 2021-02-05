@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
 
     /// <summary>
@@ -25,12 +21,12 @@ namespace Personnel_Department.BL.ModelDataBase
         /// <summary>
         /// Дата   выхода  в  академ отпуст
         /// </summary>
-        public DateTime DateOnAccademic { get; set; }
+        public System.DateTime DateOnAccademic { get; set; }
 
         /// <summary>
         /// дата  выхода  из академ отпуска 
         /// </summary>
-        public DateTime DateOffAccademic { get; set; }
+        public System.DateTime DateOffAccademic { get; set; }
 
 
         /// <summary>

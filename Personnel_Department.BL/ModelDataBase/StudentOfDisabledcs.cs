@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
 
     /// <summary>
@@ -23,12 +19,12 @@ namespace Personnel_Department.BL.ModelDataBase
         /// <summary>
         /// Дата выдачи  справки
         /// </summary>
-         public  DateTime DateReference { get; set; }
+         public System.DateTime DateReference { get; set; }
 
         /// <summary>
         /// Срок  справки (дата  окончания )
         /// </summary>
-        public DateTime ShelfLifeReference { get; set; }
+        public System.DateTime ShelfLifeReference { get; set; }
         public string Coment { get; set; }
 
     }

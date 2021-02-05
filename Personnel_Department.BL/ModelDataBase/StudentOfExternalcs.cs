@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
 
     /// <summary>
@@ -15,12 +11,12 @@ namespace Personnel_Department.BL.ModelDataBase
         public int StudentId { get; set; }
         public virtual Student Students { get; set; }
 
-        public  DateTime Date { get; set; }
+        public System.DateTime Date { get; set; }
 
         /// <summary>
         /// Если человек  получил  гражданство РФ
         /// </summary>
-        public DateTime DateOf { get; set; }
+        public System.DateTime DateOf { get; set; }
 
 
         public string Country { get; set;  }

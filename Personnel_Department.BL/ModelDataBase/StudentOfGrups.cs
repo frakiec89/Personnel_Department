@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
     /// <summary>
     /// перемещение студентов 
@@ -21,12 +17,12 @@ namespace Personnel_Department.BL.ModelDataBase
         /// <summary>
         /// Дата  зачисления 
         /// </summary>
-        public  DateTime DateRegistration { get; set; }
+        public System.DateTime DateRegistration { get; set; }
 
         /// <summary>
         /// дата  отчисления 
         /// </summary>
-        public DateTime DateOffRegistration { get; set; }
+        public System.DateTime DateOffRegistration { get; set; }
 
 
         /// <summary>

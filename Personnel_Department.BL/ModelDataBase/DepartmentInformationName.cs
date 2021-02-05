@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
     /// <summary>
     /// информация  отделения - На случай  переименования 
@@ -15,7 +11,7 @@ namespace Personnel_Department.BL.ModelDataBase
        public virtual Department Departments { get; set; }
 
        
-       public DateTime DateOfOrder { get; set; }
+       public System.DateTime DateOfOrder { get; set; }
        public  string Name { get; set; }
 
        /// <summary>

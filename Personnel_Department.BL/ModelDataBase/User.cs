@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
 
     /// <summary>
@@ -16,8 +12,8 @@ namespace Personnel_Department.BL.ModelDataBase
 
         public  string Patronumic { get; set; }
        
-        public DateTime DateRegistrations { get; set; }
-        public  DateTime DataOfRegistrations { get; set; }
+        public System.DateTime DateRegistrations { get; set; }
+        public System.DateTime DataOfRegistrations { get; set; }
 
 
         /// <summary>

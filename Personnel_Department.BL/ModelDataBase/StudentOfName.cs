@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
 
     /// <summary>
@@ -19,7 +15,7 @@ namespace Personnel_Department.BL.ModelDataBase
         /// <summary>
         /// дата изменения имени
         /// </summary>
-        public  DateTime DateSetName { get; set; } 
+        public System.DateTime DateSetName { get; set; } 
 
         public string LastName { get; set; }
         public string LastSurname { get; set; }

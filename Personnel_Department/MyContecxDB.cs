@@ -5,20 +5,13 @@ namespace Personnel_Department
 {
     public class MyContecxDB :DbContext 
     {
-        public MyContecxDB ()
-        {
-            Database.EnsureCreated();
-        }
+        public MyContecxDB () => Database.EnsureCreated();
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            
-           // optionsBuilder.UseMySQL("server=192.168.10.148;port=3306;user=User1;password=DE_01392;database=Personnel_Department_DB_AHT");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => // optionsBuilder.UseMySQL("server=192.168.10.148;port=3306;user=User1;password=DE_01392;database=Personnel_Department_DB_AHT");
             optionsBuilder.UseNpgsql("Host=192.168.10.160;port=5432;Username=stud;password=stud;database=Personnel_Department_DB_AHT");
-        }
- 
 
-        public  DbSet<User> Users { get; set; }
+        #region Таблицы
+        public DbSet<User> Users { get; set; }
         public DbSet<Grup> Grups { get; set; }
         public DbSet<DepartmentInformationName> DepartmentInformationNames { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -36,22 +29,22 @@ namespace Personnel_Department
         public DbSet<StudenOfOrphant> StudenOfOrphants { get; set; }
         public DbSet<StudentOfName> StudentOfNames { get; set; }
         public DbSet<Student> Students { get; set; }
-
+        #endregion
 
 
 
     }
 
-   /*
-    public  class  MyPosgresSql : MyContecxDB
-    {
-        public MyPosgresSql() : base() 
-        {}
+    /*
+     public  class  MyPosgresSql : MyContecxDB
+     {
+         public MyPosgresSql() : base() 
+         {}
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql("Host=192.168.10.160;port=5432;user=stud;password=stud;database=Personnel_Department_DB_AHT");
-        }
-    }*/
+         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+         {
+             optionsBuilder.UseNpgsql("Host=192.168.10.160;port=5432;user=stud;password=stud;database=Personnel_Department_DB_AHT");
+         }
+     }*/
 
 }

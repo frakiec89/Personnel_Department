@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
     
     /// <summary>
@@ -16,7 +12,7 @@ namespace Personnel_Department.BL.ModelDataBase
         /// <summary>
         /// Дата открытия  группы // например группа кс-16 открыта 01.09.2016 
         /// </summary>
-        public  DateTime DateRegistration { get; set; }
+        public  System.DateTime DateRegistration { get; set; }
 
         public int SpecialtyinformationId { get; set; }
 

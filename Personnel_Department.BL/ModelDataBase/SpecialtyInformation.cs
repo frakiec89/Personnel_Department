@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
 
     /// <summary>
@@ -27,7 +23,7 @@ namespace Personnel_Department.BL.ModelDataBase
        /// <summary>
         /// срок  обучения , например  4 года 10 месяцев
         /// </summary>
-       public  DateTime TrainingPeriod { get; set; }
+       public  System.DateTime TrainingPeriod { get; set; }
      
        public  int   FormOfEducationId { get; set; }
        public FormOfEducation FormOfEducations { get; set; }

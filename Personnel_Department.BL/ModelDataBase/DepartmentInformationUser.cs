@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
 
     /// <summary>
@@ -15,7 +11,7 @@ namespace Personnel_Department.BL.ModelDataBase
         public int DepartmentId { get; set; }
         public virtual Department Departments { get; set; }
 
-        public DateTime DateOfOrder { get; set; }
+        public System.DateTime DateOfOrder { get; set; }
 
         public int UserId { get; set; }
         /// <summary>

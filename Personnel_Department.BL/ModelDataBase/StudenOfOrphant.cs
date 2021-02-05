@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
     /// <summary>
     /// Студенты сироты
@@ -13,7 +9,7 @@ namespace Personnel_Department.BL.ModelDataBase
         public int StudenOfOrphantId { get; set; }
         public int StudentId { get; set; }
         public virtual Student Student { get; set; }
-        public DateTime Date { get; set; }
+        public System.DateTime Date { get; set; }
         public string Coment { get; set; }
     }
 }
