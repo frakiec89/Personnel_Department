@@ -1,0 +1,23 @@
+﻿<Window x:Class="Personnel_Department.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Personnel_Department"
+        mc:Ignorable="d"
+        Title="MainMenu" Height="467" Width="787">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="325*"/>
+            <ColumnDefinition Width="243*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="423" Width="305">
+            <Button x:Name="btUser" Content="Список пользователей" Margin="15,15,15,15" Click="BtUser_Click"/>
+            <Button x:Name="btStudent" Content="Список студентов" Margin="15,15,15,15" Click="BtStudent_Click"/>
+            <Button x:Name="btCurators" Content="Список кураторов" Margin="15,15,15,15" Click="BtCurators_Click"/>
+            <Button x:Name="btDeparments" Content="Список Отделений" Margin="15,15,15,15" Click="BtDeparments_Click"/>
+            <Button x:Name="btDeiraction" Content="Список Направлений" Margin="15,15,15,15" Click="BtDeiraction_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

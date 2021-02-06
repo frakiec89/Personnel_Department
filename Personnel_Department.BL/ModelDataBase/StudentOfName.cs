@@ -1,6 +1,5 @@
 ﻿namespace Personnel_Department.BL.ModelDataBase
 {
-
     /// <summary>
     /// Смена  имени студента 
     /// </summary>

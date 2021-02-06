@@ -1,15 +1,17 @@
-﻿namespace Personnel_Department.BL.ModelDataBase
-{
+﻿using System.ComponentModel.DataAnnotations;
 
+namespace Personnel_Department.BL.ModelDataBase
+{
     /// <summary>
     /// Назначение кураторов   в группе 
     /// </summary>
-    public class GrupOfCurator
+    public class GroupOfCurator
     {
+        [Key]
         public  int GrupOfCuratorId { get; set; }
 
         public int GrupId { get; set; }
-        public virtual Grup Grups { get; set; }
+        public virtual Group Grups { get; set; }
 
         public int UserId { get; set; }
         public virtual User Users { get; set; }

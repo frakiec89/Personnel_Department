@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,26 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Personnel_Department
+namespace Personnel_Department.Forms
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для DirectionWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DirectionWindow : Window
     {
-        public MainWindow()
+        public DirectionWindow()
         {
             InitializeComponent();
         }
 
-        private void BtLogin_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             var window = new MainMenu();
             window.Show();
-            Hide(); Close();
+            Close();
         }
     }
 }

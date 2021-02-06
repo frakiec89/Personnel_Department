@@ -1,11 +1,13 @@
-﻿namespace Personnel_Department.BL.ModelDataBase
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Personnel_Department.BL.ModelDataBase
 {
-    
     /// <summary>
     /// Учебные группы  - например ис-18-02 (специальность - год  -  порядковый номер)
     /// </summary>
-    public   class Grup
+    public class Group
     {
+        [Key]
         public  int GrupId { get; set; }
         public  string Name { get; set; }
 

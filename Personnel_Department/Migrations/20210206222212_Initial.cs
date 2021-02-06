@@ -1,10 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using MySql.EntityFrameworkCore.Metadata;
 
 namespace Personnel_Department.Migrations
 {
-    public partial class Mig : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +12,8 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     DepartmentId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Address = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,8 +25,8 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     DirectionId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -39,8 +38,8 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     FormOfEducationId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,11 +51,11 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     StudentId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Surname = table.Column<string>(type: "text", nullable: true),
-                    Patronumic = table.Column<string>(type: "text", nullable: true),
-                    ISDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Patronumic = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ISDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,13 +67,13 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Surname = table.Column<string>(type: "text", nullable: true),
-                    Patronumic = table.Column<string>(type: "text", nullable: true),
-                    DateRegistrations = table.Column<DateTime>(type: "datetime", nullable: false),
-                    DataOfRegistrations = table.Column<DateTime>(type: "datetime", nullable: false),
-                    ISDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Patronumic = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateRegistrations = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DateOfDismissal = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ISDeleted = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -86,11 +85,11 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     DepartmentInformationNameId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
-                    DateOfOrder = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Coment = table.Column<string>(type: "text", nullable: true)
+                    DateOfOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Coment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -108,11 +107,11 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     SpecialtyId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    CodeSpecialty = table.Column<string>(type: "text", nullable: true),
-                    Name = table.Column<string>(type: "text", nullable: true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CodeSpecialty = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DirectionId = table.Column<int>(type: "int", nullable: false),
-                    ISDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    ISDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -130,10 +129,10 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     StudenOfOrphantId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StudentId = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Coment = table.Column<string>(type: "text", nullable: true)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Coment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -151,12 +150,12 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     StudentOfDisabledcsId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StudentId = table.Column<int>(type: "int", nullable: false),
-                    TypeDisabledcs = table.Column<string>(type: "text", nullable: true),
-                    DateReference = table.Column<DateTime>(type: "datetime", nullable: false),
-                    ShelfLifeReference = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Coment = table.Column<string>(type: "text", nullable: true)
+                    TypeDisabledcs = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateReference = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ShelfLifeReference = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Coment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -174,13 +173,13 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     StudentOfExternalId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StudentId = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime", nullable: false),
-                    DateOf = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Country = table.Column<string>(type: "text", nullable: true),
-                    Docyment = table.Column<string>(type: "text", nullable: true),
-                    Coment = table.Column<string>(type: "text", nullable: true)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateOf = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Docyment = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Coment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -198,16 +197,16 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     StudentOfNameId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StudentId = table.Column<int>(type: "int", nullable: false),
-                    DateSetName = table.Column<DateTime>(type: "datetime", nullable: false),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    LastSurname = table.Column<string>(type: "text", nullable: true),
-                    LastPatronumic = table.Column<string>(type: "text", nullable: true),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Surname = table.Column<string>(type: "text", nullable: true),
-                    Patronumic = table.Column<string>(type: "text", nullable: true),
-                    Coment = table.Column<string>(type: "text", nullable: true)
+                    DateSetName = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastSurname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastPatronumic = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Patronumic = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Coment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -225,11 +224,11 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     DepartmentInformationUserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
-                    DateOfOrder = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DateOfOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Coment = table.Column<string>(type: "text", nullable: true)
+                    Coment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -253,13 +252,13 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     SpecialtyinformationId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SpecialtyId = table.Column<int>(type: "int", nullable: false),
-                    NameProfile = table.Column<string>(type: "text", nullable: true),
-                    BaseEndNoBase = table.Column<string>(type: "text", nullable: true),
-                    TrainingPeriod = table.Column<DateTime>(type: "datetime", nullable: false),
+                    NameProfile = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BaseEndNoBase = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TrainingPeriod = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FormOfEducationId = table.Column<int>(type: "int", nullable: false),
-                    ISDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    ISDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -283,14 +282,14 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     GrupId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    DateRegistration = table.Column<DateTime>(type: "datetime", nullable: false),
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateRegistration = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SpecialtyinformationId = table.Column<int>(type: "int", nullable: false),
                     DefaultCountPeoples = table.Column<int>(type: "int", nullable: false),
-                    DisabledGrups = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DisabledGrups = table.Column<bool>(type: "bit", nullable: false),
                     DefaultFreeEducation = table.Column<int>(type: "int", nullable: false),
-                    ISDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    ISDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -308,21 +307,22 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     GrupOfCuratorId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GrupId = table.Column<int>(type: "int", nullable: false),
+                    GrupsGrupId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    DateOfOrder = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Coment = table.Column<string>(type: "text", nullable: true)
+                    DateOfOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Coment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_GrupOfCurators", x => x.GrupOfCuratorId);
                     table.ForeignKey(
-                        name: "FK_GrupOfCurators_Grups_GrupId",
-                        column: x => x.GrupId,
+                        name: "FK_GrupOfCurators_Grups_GrupsGrupId",
+                        column: x => x.GrupsGrupId,
                         principalTable: "Grups",
                         principalColumn: "GrupId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_GrupOfCurators_Users_UserId",
                         column: x => x.UserId,
@@ -336,11 +336,12 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     GrupOfDepartamentId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GrupId = table.Column<int>(type: "int", nullable: false),
+                    GrupsGrupId = table.Column<int>(type: "int", nullable: true),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
-                    DateOfOrder = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Coment = table.Column<string>(type: "text", nullable: true)
+                    DateOfOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Coment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -352,11 +353,11 @@ namespace Personnel_Department.Migrations
                         principalColumn: "DepartmentId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_GrupOfDepartaments_Grups_GrupId",
-                        column: x => x.GrupId,
+                        name: "FK_GrupOfDepartaments_Grups_GrupsGrupId",
+                        column: x => x.GrupsGrupId,
                         principalTable: "Grups",
                         principalColumn: "GrupId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -364,24 +365,25 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     StudentOfAcademicId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StudentId = table.Column<int>(type: "int", nullable: false),
                     GrupId = table.Column<int>(type: "int", nullable: false),
-                    DateOnAccademic = table.Column<DateTime>(type: "datetime", nullable: false),
-                    DateOffAccademic = table.Column<DateTime>(type: "datetime", nullable: false),
-                    OrederOn = table.Column<string>(type: "text", nullable: true),
-                    OrederOff = table.Column<string>(type: "text", nullable: true),
-                    Coment = table.Column<string>(type: "text", nullable: true)
+                    GrupsGrupId = table.Column<int>(type: "int", nullable: true),
+                    DateOnAccademic = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateOffAccademic = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrederOn = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrederOff = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Coment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StudentOfAcademics", x => x.StudentOfAcademicId);
                     table.ForeignKey(
-                        name: "FK_StudentOfAcademics_Grups_GrupId",
-                        column: x => x.GrupId,
+                        name: "FK_StudentOfAcademics_Grups_GrupsGrupId",
+                        column: x => x.GrupsGrupId,
                         principalTable: "Grups",
                         principalColumn: "GrupId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_StudentOfAcademics_Students_StudentId",
                         column: x => x.StudentId,
@@ -395,24 +397,25 @@ namespace Personnel_Department.Migrations
                 columns: table => new
                 {
                     StudentOfGrupsId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StudentId = table.Column<int>(type: "int", nullable: false),
                     GrupId = table.Column<int>(type: "int", nullable: false),
-                    DateRegistration = table.Column<DateTime>(type: "datetime", nullable: false),
-                    DateOffRegistration = table.Column<DateTime>(type: "datetime", nullable: false),
-                    OrederOn = table.Column<string>(type: "text", nullable: true),
-                    OrederOff = table.Column<string>(type: "text", nullable: true),
-                    Coment = table.Column<string>(type: "text", nullable: true)
+                    GrupsGrupId = table.Column<int>(type: "int", nullable: true),
+                    DateRegistration = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateOffRegistration = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrederOn = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrederOff = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Coment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StudentOfGrups", x => x.StudentOfGrupsId);
                     table.ForeignKey(
-                        name: "FK_StudentOfGrups_Grups_GrupId",
-                        column: x => x.GrupId,
+                        name: "FK_StudentOfGrups_Grups_GrupsGrupId",
+                        column: x => x.GrupsGrupId,
                         principalTable: "Grups",
                         principalColumn: "GrupId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_StudentOfGrups_Students_StudentId",
                         column: x => x.StudentId,
@@ -437,9 +440,9 @@ namespace Personnel_Department.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GrupOfCurators_GrupId",
+                name: "IX_GrupOfCurators_GrupsGrupId",
                 table: "GrupOfCurators",
-                column: "GrupId");
+                column: "GrupsGrupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GrupOfCurators_UserId",
@@ -452,9 +455,9 @@ namespace Personnel_Department.Migrations
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GrupOfDepartaments_GrupId",
+                name: "IX_GrupOfDepartaments_GrupsGrupId",
                 table: "GrupOfDepartaments",
-                column: "GrupId");
+                column: "GrupsGrupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Grups_SpecialtyinformationId",
@@ -482,9 +485,9 @@ namespace Personnel_Department.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentOfAcademics_GrupId",
+                name: "IX_StudentOfAcademics_GrupsGrupId",
                 table: "StudentOfAcademics",
-                column: "GrupId");
+                column: "GrupsGrupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StudentOfAcademics_StudentId",
@@ -502,9 +505,9 @@ namespace Personnel_Department.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentOfGrups_GrupId",
+                name: "IX_StudentOfGrups_GrupsGrupId",
                 table: "StudentOfGrups",
-                column: "GrupId");
+                column: "GrupsGrupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StudentOfGrups_StudentId",

@@ -2,34 +2,34 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Personnel_Department;
 
 namespace Personnel_Department.Migrations
 {
-    [DbContext(typeof(MyContecxDB))]
-    [Migration("20210204121428_post")]
-    partial class post
+    [DbContext(typeof(ApplicationContext))]
+    [Migration("20210206222212_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityByDefaultColumns()
-                .HasAnnotation("Relational:MaxIdentifierLength", 63)
+                .UseIdentityColumns()
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.Department", b =>
                 {
                     b.Property<int>("DepartmentId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Address")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DepartmentId");
 
@@ -40,20 +40,20 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("DepartmentInformationNameId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Coment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfOrder")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("DepartmentId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DepartmentInformationNameId");
 
@@ -66,20 +66,20 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("DepartmentInformationUserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Coment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfOrder")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("DepartmentId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("DepartmentInformationUserId");
 
@@ -94,11 +94,11 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("DirectionId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DirectionId");
 
@@ -109,44 +109,44 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("FormOfEducationId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FormOfEducationId");
 
                     b.ToTable("FormOfEducations");
                 });
 
-            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.Grup", b =>
+            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.Group", b =>
                 {
                     b.Property<int>("GrupId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("DateRegistration")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("DefaultCountPeoples")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<int>("DefaultFreeEducation")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<bool>("DisabledGrups")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<bool>("ISDeleted")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SpecialtyinformationId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("GrupId");
 
@@ -155,58 +155,64 @@ namespace Personnel_Department.Migrations
                     b.ToTable("Grups");
                 });
 
-            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.GrupOfCurator", b =>
+            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.GroupOfCurator", b =>
                 {
                     b.Property<int>("GrupOfCuratorId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Coment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfOrder")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("GrupId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GrupsGrupId")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("GrupOfCuratorId");
 
-                    b.HasIndex("GrupId");
+                    b.HasIndex("GrupsGrupId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("GrupOfCurators");
                 });
 
-            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.GrupOfDepartament", b =>
+            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.GroupOfDepartament", b =>
                 {
                     b.Property<int>("GrupOfDepartamentId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Coment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfOrder")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("DepartmentId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<int>("GrupId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GrupsGrupId")
+                        .HasColumnType("int");
 
                     b.HasKey("GrupOfDepartamentId");
 
                     b.HasIndex("DepartmentId");
 
-                    b.HasIndex("GrupId");
+                    b.HasIndex("GrupsGrupId");
 
                     b.ToTable("GrupOfDepartaments");
                 });
@@ -215,20 +221,20 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("SpecialtyId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("CodeSpecialty")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DirectionId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<bool>("ISDeleted")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SpecialtyId");
 
@@ -241,26 +247,26 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("SpecialtyinformationId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("BaseEndNoBase")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("FormOfEducationId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<bool>("ISDeleted")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("NameProfile")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SpecialtyId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("TrainingPeriod")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("SpecialtyinformationId");
 
@@ -275,17 +281,17 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("StudenOfOrphantId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Coment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("StudentId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("StudenOfOrphantId");
 
@@ -298,20 +304,20 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("StudentId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<bool>("ISDeleted")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Patronumic")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StudentId");
 
@@ -322,33 +328,36 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("StudentOfAcademicId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Coment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOffAccademic")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateOnAccademic")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("GrupId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GrupsGrupId")
+                        .HasColumnType("int");
 
                     b.Property<string>("OrederOff")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OrederOn")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StudentId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("StudentOfAcademicId");
 
-                    b.HasIndex("GrupId");
+                    b.HasIndex("GrupsGrupId");
 
                     b.HasIndex("StudentId");
 
@@ -359,23 +368,23 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("StudentOfDisabledcsId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Coment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateReference")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("ShelfLifeReference")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("StudentId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("TypeDisabledcs")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StudentOfDisabledcsId");
 
@@ -388,26 +397,26 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("StudentOfExternalId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Coment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateOf")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Docyment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StudentId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("StudentOfExternalId");
 
@@ -420,33 +429,36 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("StudentOfGrupsId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Coment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOffRegistration")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateRegistration")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("GrupId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GrupsGrupId")
+                        .HasColumnType("int");
 
                     b.Property<string>("OrederOff")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OrederOn")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StudentId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("StudentOfGrupsId");
 
-                    b.HasIndex("GrupId");
+                    b.HasIndex("GrupsGrupId");
 
                     b.HasIndex("StudentId");
 
@@ -457,35 +469,35 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("StudentOfNameId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Coment")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateSetName")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastPatronumic")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastSurname")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Patronumic")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StudentId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("Surname")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StudentOfNameId");
 
@@ -498,26 +510,26 @@ namespace Personnel_Department.Migrations
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
-                    b.Property<DateTime>("DataOfRegistrations")
-                        .HasColumnType("timestamp without time zone");
+                    b.Property<DateTime?>("DateOfDismissal")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateRegistrations")
-                        .HasColumnType("timestamp without time zone");
+                    b.Property<DateTime?>("DateRegistrations")
+                        .HasColumnType("datetime2");
 
-                    b.Property<bool>("ISDeleted")
-                        .HasColumnType("boolean");
+                    b.Property<bool?>("ISDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Patronumic")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
 
@@ -554,7 +566,7 @@ namespace Personnel_Department.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.Grup", b =>
+            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.Group", b =>
                 {
                     b.HasOne("Personnel_Department.BL.ModelDataBase.SpecialtyInformation", "SpecialtyInformations")
                         .WithMany()
@@ -565,13 +577,11 @@ namespace Personnel_Department.Migrations
                     b.Navigation("SpecialtyInformations");
                 });
 
-            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.GrupOfCurator", b =>
+            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.GroupOfCurator", b =>
                 {
-                    b.HasOne("Personnel_Department.BL.ModelDataBase.Grup", "Grups")
+                    b.HasOne("Personnel_Department.BL.ModelDataBase.Group", "Grups")
                         .WithMany()
-                        .HasForeignKey("GrupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GrupsGrupId");
 
                     b.HasOne("Personnel_Department.BL.ModelDataBase.User", "Users")
                         .WithMany()
@@ -584,7 +594,7 @@ namespace Personnel_Department.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.GrupOfDepartament", b =>
+            modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.GroupOfDepartament", b =>
                 {
                     b.HasOne("Personnel_Department.BL.ModelDataBase.Department", "Departments")
                         .WithMany()
@@ -592,11 +602,9 @@ namespace Personnel_Department.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Personnel_Department.BL.ModelDataBase.Grup", "Grups")
+                    b.HasOne("Personnel_Department.BL.ModelDataBase.Group", "Grups")
                         .WithMany()
-                        .HasForeignKey("GrupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GrupsGrupId");
 
                     b.Navigation("Departments");
 
@@ -646,11 +654,9 @@ namespace Personnel_Department.Migrations
 
             modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.StudentOfAcademic", b =>
                 {
-                    b.HasOne("Personnel_Department.BL.ModelDataBase.Grup", "Grups")
+                    b.HasOne("Personnel_Department.BL.ModelDataBase.Group", "Grups")
                         .WithMany()
-                        .HasForeignKey("GrupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GrupsGrupId");
 
                     b.HasOne("Personnel_Department.BL.ModelDataBase.Student", "Student")
                         .WithMany()
@@ -687,11 +693,9 @@ namespace Personnel_Department.Migrations
 
             modelBuilder.Entity("Personnel_Department.BL.ModelDataBase.StudentOfGrups", b =>
                 {
-                    b.HasOne("Personnel_Department.BL.ModelDataBase.Grup", "Grups")
+                    b.HasOne("Personnel_Department.BL.ModelDataBase.Group", "Grups")
                         .WithMany()
-                        .HasForeignKey("GrupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GrupsGrupId");
 
                     b.HasOne("Personnel_Department.BL.ModelDataBase.Student", "Student")
                         .WithMany()

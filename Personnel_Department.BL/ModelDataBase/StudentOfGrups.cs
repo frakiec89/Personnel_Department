@@ -11,7 +11,7 @@
         public virtual Student Student { get;set;}
 
         public int GrupId { get; set; }
-        public virtual Grup Grups { get; set; }
+        public virtual Group Grups { get; set; }
 
 
         /// <summary>

@@ -15,7 +15,7 @@
         /// Группа из которой ушел  в академ 
         /// </summary>
         public int GrupId { get; set; }
-        public virtual Grup Grups { get; set; }
+        public virtual Group Grups { get; set; }
        
 
         /// <summary>

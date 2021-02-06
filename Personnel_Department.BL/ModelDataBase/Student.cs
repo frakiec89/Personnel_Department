@@ -1,8 +1,5 @@
 ﻿namespace Personnel_Department.BL.ModelDataBase
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public  class Student
     {
         public int StudentId { get; set; }
