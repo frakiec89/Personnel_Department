@@ -11,7 +11,7 @@
             <RowDefinition Height="37*"/>
             <RowDefinition Height="397*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="LbMain" Grid.Row="1" >
+        <ListBox x:Name="LbMain" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -28,7 +28,7 @@
                         <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
                             <Image Source="{Binding ImagePath}"/>
                         </Border>
-                        <Label Content="{Binding FullName}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1">
+                        <Label Content="{Binding FullName}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Label_MouseDoubleClick">
                             <Label.ToolTip>
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock Text="{Binding FullName}"/>

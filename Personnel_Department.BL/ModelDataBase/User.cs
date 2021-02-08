@@ -17,7 +17,7 @@ namespace Personnel_Department.BL.ModelDataBase
         public System.DateTime? DateOfDismissal { get; set; }
 
         [NotMapped]
-        public virtual string FullName { get => Name + " " + Surname + "  " + Patronumic; }
+        public virtual string FullName { get => Name + " " + Surname + " " + Patronumic; set { FullName = value; } }
 
         [DefaultValue(false)]
         /// <summary>

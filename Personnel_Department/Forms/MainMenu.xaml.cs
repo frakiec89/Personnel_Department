@@ -16,7 +16,7 @@ namespace Personnel_Department
         {
             var userWindow = new UserWindow();
             userWindow.Show();
-            Hide();
+            Close();
         }
 
         private void BtStudent_Click(object sender, RoutedEventArgs e)

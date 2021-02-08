@@ -38,5 +38,11 @@ namespace Personnel_Department
             window.Show();
             Close();
         }
+
+        private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Forms.AdditionalUserWindow window = new Forms.AdditionalUserWindow(LbMain.SelectedItem);
+            window.ShowDialog();
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personnel_Department"
         mc:Ignorable="d"
-        Title="MainMenu" Height="467" Width="787">
+        Title="MainMenu" Height="467" Width="787" Style="{StaticResource MyWin}" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="232*"/>

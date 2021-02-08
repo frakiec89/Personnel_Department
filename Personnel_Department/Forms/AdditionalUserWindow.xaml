@@ -1,0 +1,36 @@
+﻿<Window x:Class="Personnel_Department.Forms.AdditionalUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Personnel_Department.Forms"
+        mc:Ignorable="d"
+        Title="AdditionalUserWindow" Height="450" Width="396">
+    <Grid x:Name="grids">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="137*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="Aqua" BorderBrush="Black" BorderThickness="3">
+            <Image Source=""/>
+        </Border>
+        <StackPanel Orientation="Vertical" Grid.Row="1" x:Name="MainStackPanel">
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="LbFirst" Content="ASD"/>
+                <TextBox Text="{Binding Surname}"/>
+                <Label x:Name="LbSecond" Content="ASD"/>
+                <TextBox Text="{Binding Name}"/>
+                <Label x:Name="LbT" Content="ASD"/>
+                <TextBox Text="{Binding Patronumic}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="LbFourth"  Content="ASD"/>
+                <DatePicker SelectedDate="{Binding DateRegistrations}"  IsDropDownOpen="False" SelectedDateFormat ="Short"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="LbFifth"   Content="ASD"/>
+                <DatePicker SelectedDate="{Binding DateOfDismissal}"  IsDropDownOpen="False" SelectedDateFormat ="Short"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
