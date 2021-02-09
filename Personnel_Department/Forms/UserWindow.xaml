@@ -13,38 +13,45 @@
         </Grid.RowDefinitions>
        
         <Button Content="Добавить пользователя" Click="Button_Click_1" Height="37" Width="257"/>
-       
-        <ListBox x:Name="LbMain" Grid.Row="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
-                            <Image Source="{Binding ImagePath}"/>
-                        </Border>
-                        <Label Content="{Binding FullName}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Label_MouseDoubleClick">
-                            <Label.ToolTip>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding FullName}"/>
-                                    <TextBlock Text="{Binding DateRegistrations}"/>
-                                    <TextBlock Text="{Binding DateOfDismissal}"/>
-                                </StackPanel>
-                            </Label.ToolTip>
-                        </Label>
-                        <Label Content="{Binding DateOfDismissal}" Grid.Row="1" Grid.Column="1"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+
+        <StackPanel   Grid.Row="1">
+
+            <Label Name="lbTimeRun" Grid.Row="1" Content="Подождите" Padding="10" 
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+            <ListBox x:Name="LbMain">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
+                                <Image Source="{Binding ImagePath}"/>
+                            </Border>
+                            <Label Content="{Binding FullName}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Label_MouseDoubleClick">
+                                <Label.ToolTip>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding FullName}"/>
+                                        <TextBlock Text="{Binding DateRegistrations}"/>
+                                        <TextBlock Text="{Binding DateOfDismissal}"/>
+                                    </StackPanel>
+                                </Label.ToolTip>
+                            </Label>
+                            <Label Content="{Binding DateOfDismissal}" Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
         <Button Content="Назад" HorizontalAlignment="Left" Width="51" Click="Button_Click"/>
     </Grid>
 </Window>

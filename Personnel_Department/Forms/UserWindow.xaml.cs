@@ -23,14 +23,22 @@ namespace Personnel_Department
         public UserWindow()
         {
             InitializeComponent();
+            this.Loaded += UserWindow_Loaded;
+           
+        }
+
+        private void UserWindow_Loaded(object sender, RoutedEventArgs e)
+        {
             UpdateDb();
         }
 
-        private void UpdateDb()
+        private async void UpdateDb()
         {
-            var userController = new Controllers.UserController(true);
+            var userController = await Task.Run(() => new Controllers.UserController(true));
             LbMain.ItemsSource = userController.users;
+            lbTimeRun.Visibility = Visibility.Collapsed;
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
