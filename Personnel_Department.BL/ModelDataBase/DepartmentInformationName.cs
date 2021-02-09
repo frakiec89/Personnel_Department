@@ -9,7 +9,6 @@
        
        public int DepartmentId { get; set; }
        public virtual Department Departments { get; set; }
-
        
        public System.DateTime DateOfOrder { get; set; }
        public  string Name { get; set; }

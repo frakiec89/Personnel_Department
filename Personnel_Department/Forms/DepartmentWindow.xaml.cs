@@ -19,22 +19,28 @@ namespace Personnel_Department.Forms
     /// </summary>
     public partial class DepartmentWindow : Window
     {
-        public DepartmentWindow()
-        {
-            InitializeComponent();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public DepartmentWindow() => InitializeComponent();
+        private void UpdateDb()
         {
             var controller = new Controllers.DepartmentController();
-            LbMain.ItemsSource = controller.departments;
+            LbMain.ItemsSource = (System.Collections.IEnumerable)controller.department;
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) => UpdateDb();
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var window = new MainMenu();
             window.Show();
             Close();
+        }
+        public object MyProperty { get; set; }
+        private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MyProperty = LbMain.SelectedItem;
+            var window = new AdditionalForms.AdditionalDepartmentWindow(MyProperty);
+            window.Show();
+            UpdateDb();
         }
     }
 }

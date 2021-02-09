@@ -8,19 +8,18 @@ namespace Personnel_Department.Controllers
 {
     class DepartmentController
     {
-        readonly ApplicationContext dbConnect = new ApplicationContext();
-        public List<Department> departments = new List<Department>();
-
+        ApplicationContext dbConnect;
+        public object department;
         /// <summary>
         /// показывать  удаленных / да нет 
         /// </summary>
         /// <param name="visableDelete"></param>
         public DepartmentController()
         {
+            dbConnect = new ApplicationContext();
             try
             {
-                var d = dbConnect.
-                     DepartmentInformationNames.Join
+                department = dbConnect.DepartmentInformationNames.Join
                     (
                      dbConnect.Departments,
                      u => u.DepartmentId,
@@ -44,7 +43,7 @@ namespace Personnel_Department.Controllers
                          DateOfOrderName = u.DateOfOrder,
                          DateOfOrderUser = c.DateOfOrder
                      }
-                    );
+                    ).ToList();
             }
             catch
             {
