@@ -19,7 +19,32 @@ namespace Personnel_Department.Controllers
         {
             try
             {
-                departments = dbConnect.Departments.ToList();
+                var d = dbConnect.
+                     DepartmentInformationNames.Join
+                    (
+                     dbConnect.Departments,
+                     u => u.DepartmentId,
+                     c => c.DepartmentId,
+                     (u, c) => new
+                     {
+                         u.Name,
+                         c.DepartmentId,
+                         c.Address,
+                         u.DateOfOrder
+                     }
+                    ).Join(dbConnect.DepartmentInformationUsers,
+                     u => u.DepartmentId,
+                     c => c.DepartmentId,
+                     (u, c) => new
+                     {
+                         u.Address,
+                         u.DepartmentId,
+                         u.Name,
+                         c.DepartmentInformationUserId,
+                         DateOfOrderName = u.DateOfOrder,
+                         DateOfOrderUser = c.DateOfOrder
+                     }
+                    );
             }
             catch
             {
