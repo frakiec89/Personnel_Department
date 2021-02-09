@@ -5,12 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personnel_Department"
         mc:Ignorable="d"
-        Title="UserWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="UserWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
             <RowDefinition Height="397*"/>
         </Grid.RowDefinitions>
+       
+        <Button Content="Добавить пользователя" Click="Button_Click_1" Height="37" Width="257"/>
+       
         <ListBox x:Name="LbMain" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>

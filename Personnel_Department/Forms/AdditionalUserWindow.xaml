@@ -14,23 +14,29 @@
         <Border Grid.Row="0" Background="Aqua" BorderBrush="Black" BorderThickness="3">
             <Image Source=""/>
         </Border>
-        <StackPanel Orientation="Vertical" Grid.Row="1" x:Name="MainStackPanel">
+        
+        <StackPanel Orientation="Vertical" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbFirst" Content="ASD"/>
-                <TextBox Text="{Binding Surname}"/>
-                <Label x:Name="LbSecond" Content="ASD"/>
-                <TextBox Text="{Binding Name}"/>
-                <Label x:Name="LbT" Content="ASD"/>
-                <TextBox Text="{Binding Patronumic}"/>
+                <Label x:Name="LbSurname" Content="Фамилия"/>
+                <TextBox x:Name="TbSurname" Text="{Binding Surname}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbFourth"  Content="ASD"/>
-                <DatePicker SelectedDate="{Binding DateRegistrations}"  IsDropDownOpen="False" SelectedDateFormat ="Short"/>
+            <Label x:Name="LbName" Content="Имя"/>
+                <TextBox x:Name="TbName" Text="{Binding Name}"  />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+                <Label x:Name="LbPatronumic" Content="Отчество"/>
+                <TextBox x:Name ="TbPatronumic"  Text="{Binding Patronumic}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbFifth"   Content="ASD"/>
-                <DatePicker SelectedDate="{Binding DateOfDismissal}"  IsDropDownOpen="False" SelectedDateFormat ="Short"/>
+                <Label x:Name="LbDateRegistrations"  Content="Дата принятия на работу"/>
+                <DatePicker x:Name="DpDateRegistrations" SelectedDate="{Binding DateRegistrations}"  IsDropDownOpen="False" SelectedDateFormat ="Short" />
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="LbDateOfDismissal"   Content="Дата увольнения"/>
+                <DatePicker x:Name="DpDateOfDismissal" SelectedDate="{Binding DateOfDismissal}"  IsDropDownOpen="False" SelectedDateFormat ="Short"/>
+            </StackPanel>
+            <Button x:Name="btSave" Content="Сохранить" Grid.Row="1" Visibility="Hidden" Click="BtSave_Click"/>
         </StackPanel>
     </Grid>
 </Window>

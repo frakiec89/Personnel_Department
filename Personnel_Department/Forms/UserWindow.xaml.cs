@@ -19,14 +19,14 @@ namespace Personnel_Department
     /// </summary>
     public partial class UserWindow : Window
     {
+
         public UserWindow()
         {
             InitializeComponent();
-            var userController = new Controllers.UserController(true);
-            LbMain.ItemsSource = userController.users;
+            UpdateDb();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void UpdateDb()
         {
             var userController = new Controllers.UserController(true);
             LbMain.ItemsSource = userController.users;
@@ -43,6 +43,13 @@ namespace Personnel_Department
         {
             Forms.AdditionalUserWindow window = new Forms.AdditionalUserWindow(LbMain.SelectedItem);
             window.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var window = new Forms.AdditionalUserWindow();
+            window.ShowDialog();
+            UpdateDb();
         }
     }
 }

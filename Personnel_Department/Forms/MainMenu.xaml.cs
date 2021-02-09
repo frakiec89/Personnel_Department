@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace Personnel_Department
 {
@@ -14,8 +16,11 @@ namespace Personnel_Department
 
         private void BtUser_Click(object sender, RoutedEventArgs e)
         {
-            var userWindow = new UserWindow();
-            userWindow.Show();
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                var userWindow = new UserWindow();
+                 userWindow.Show();
+            });
             Close();
         }
 

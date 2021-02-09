@@ -20,7 +20,7 @@ namespace Personnel_Department.Forms
     /// <summary>
     /// Логика взаимодействия для AdditionalUserWindow.xaml
     /// </summary>
-    public partial class AdditionalUserWindow : Window
+    public partial class AdditionalUserWindow  : Window
     {
         /// <summary>
         /// Редактирование пользователей
@@ -29,16 +29,26 @@ namespace Personnel_Department.Forms
         public AdditionalUserWindow(object selectedObjUser)
         {
             InitializeComponent();
-            LbFirst.Content = "Фамилия";
-            LbSecond.Content = "Имя";
-            LbT.Content = "Отчество";
-            LbFourth.Content = "Дата принятия на работу";
-            LbFifth.Content = "Дата увольнения";
             var user = (User)selectedObjUser;
             Controllers.UserController userController = new Controllers.UserController();
             var selectedUser = userController.users.Find(x => x.UserId == user.UserId);
             grids.DataContext = selectedUser;
         }
-        //public AdditionalUserWindow()
+
+
+        public AdditionalUserWindow()
+        {
+            InitializeComponent();
+            LbDateOfDismissal.Visibility =  Visibility.Hidden;
+            btSave.Visibility = Visibility.Visible;
+            DpDateOfDismissal.Visibility = Visibility.Hidden;
+        }
+
+        private void BtSave_Click(object sender, RoutedEventArgs e)
+        {
+            User newUser = new User() { Name = TbName.Text, Surname = TbSurname.Text, Patronumic = TbPatronumic.Text, DateRegistrations = DpDateRegistrations.SelectedDate};
+            MessageBox.Show(Controllers.UserController.EditOrCreateUser(newUser));
+            Close();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace Personnel_Department.BL.ModelDataBase
 {
@@ -9,10 +10,14 @@ namespace Personnel_Department.BL.ModelDataBase
     public class User
     {
         public int UserId { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Surname { get; set; }
+        [Required]
         public string Patronumic { get; set; }
 
+        [Required]
         public System.DateTime? DateRegistrations { get; set; }
         public System.DateTime? DateOfDismissal { get; set; }
 
