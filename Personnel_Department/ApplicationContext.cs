@@ -6,14 +6,12 @@ namespace Personnel_Department
     public class ApplicationContext: DbContext
     {
         public ApplicationContext()
-        {
-            //Database.EnsureCreated();
-        }
+        { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=192.168.10.160;Database=Personnel_Department_Db;Trusted_Connection=True;");
-            //optionsBuilder.UseNpgsql("Host=192.168.10.160;Port=5432;Database=Personnel_Department_DB_AHT;Username=stud;Password=stud");
+            optionsBuilder.UseSqlServer("Server=192.168.10.160;Initial Catalog=Personnel_Department_Db; user id =IS_18_02;Password=IS_18_02;");
+         //   optionsBuilder.UseNpgsql("Host=192.168.10.160;Port=5432;Database=Personnel_Department_DB_AHT;Username=stud;Password=stud");
         }
             #region Таблицы
         public DbSet<User> Users { get; set; }
