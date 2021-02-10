@@ -8,15 +8,15 @@ namespace Personnel_Department.Controllers
 {
     class DepartmentController
     {
-        readonly ApplicationContext dbConnect = new ApplicationContext();
-        public List<Department> departments = new List<Department>();
-
+        ApplicationContext dbConnect;
+        public object department;
         /// <summary>
         /// показывать  удаленных / да нет 
         /// </summary>
         /// <param name="visableDelete"></param>
         public DepartmentController()
         {
+            dbConnect = new ApplicationContext();
             try
             {
                 var content = from d in dbConnect.Departments

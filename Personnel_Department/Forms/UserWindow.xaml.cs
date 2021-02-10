@@ -20,22 +20,15 @@ namespace Personnel_Department
     public partial class UserWindow : Window
     {
 
-        public UserWindow()
-        {
-            InitializeComponent();
-            this.Loaded += UserWindow_Loaded;
-           
-        }
+        public UserWindow() => InitializeComponent();
 
-        private void UserWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            UpdateDb();
-        }
+        private void UserWindow_Loaded(object sender, RoutedEventArgs e) => UpdateDb();
 
         private async void UpdateDb()
         {
             var userController = await Task.Run(() => new Controllers.UserController(true));
-            LbMain.ItemsSource = userController.users;
+            //TODO: ad
+            LbMain.ItemsSource = userController.Refresh();
             lbTimeRun.Visibility = Visibility.Collapsed;
         }
 

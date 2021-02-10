@@ -13,10 +13,8 @@ namespace Personnel_Department.Controllers
         readonly ApplicationContext dbConnect = new ApplicationContext();
         public List<User> users;
 
-        public void Refresh ()
-        {
-            users = dbConnect.Users.ToList();
-        }
+        public List<User> Refresh () => users = dbConnect.Users.ToList();
+
 
         /// <summary>
         /// показывать  удаленных / да нет 
