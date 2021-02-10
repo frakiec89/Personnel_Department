@@ -19,7 +19,29 @@ namespace Personnel_Department.Controllers
         {
             try
             {
-                var d = dbConnect.
+                var content = from d in dbConnect.Departments
+                              from dn in dbConnect.DepartmentInformationNames
+                              from du in dbConnect.DepartmentInformationUsers
+                              select new
+                              {
+                                  d.Address, d.DepartmentId, dn.Name, du.DepartmentInformationUserId,
+                                  DateOfOrderDn =   dn.DateOfOrder ,
+                                  DateOfOrderDu = du.DateOfOrder
+                              };
+
+
+
+            }
+            catch
+            {
+                throw new Exception("Error  connect BD");
+            }
+        }
+    }
+}
+
+
+/*      var d = dbConnect.
                      DepartmentInformationNames.Join
                     (
                      dbConnect.Departments,
@@ -44,12 +66,4 @@ namespace Personnel_Department.Controllers
                          DateOfOrderName = u.DateOfOrder,
                          DateOfOrderUser = c.DateOfOrder
                      }
-                    );
-            }
-            catch
-            {
-                throw new Exception("Error  connect BD");
-            }
-        }
-    }
-}
+                    );*/
