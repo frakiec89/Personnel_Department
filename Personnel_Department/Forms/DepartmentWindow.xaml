@@ -10,6 +10,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="27*"/>
             <RowDefinition Height="407*"/>
+
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="407*"/>
+
+
         </Grid.RowDefinitions>
         <ListBox x:Name="LbMain" Grid.Row="1" >
             <ListBox.ItemTemplate>
@@ -29,7 +34,7 @@
                             <Image Source="{Binding ImagePath}"/>
                         </Border>
                         <Label Content="{Binding Name}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Label_MouseDoubleClick"/>
-                        <Label Content="{Binding Address}" Grid.Row="2" Grid.Column="1"/>
+                        <Label Content="{Binding Coment}" Grid.Row="2" Grid.Column="1"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

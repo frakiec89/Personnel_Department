@@ -23,7 +23,7 @@ namespace Personnel_Department.Forms
         private void UpdateDb()
         {
             var controller = new Controllers.DepartmentController();
-            LbMain.ItemsSource = (System.Collections.IEnumerable)controller.department;
+            LbMain.ItemsSource = (System.Collections.IEnumerable)controller.LastDepartments;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) => UpdateDb();
