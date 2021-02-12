@@ -11,8 +11,7 @@ namespace Personnel_Department.Controllers
     {
         ApplicationContext dbConnect;
         public List<DepartmentInfo> Departments = new List<DepartmentInfo>();
-        public List<DepartmentInformationName> LastDepartments = new List<DepartmentInformationName>();
-        public List<DepartmentInformationUser> LastDepartmentInformationUsers = new List<DepartmentInformationUser>();
+       
 
         public string ComentName { get; private set; }
         public DateTime DataName { get; private set; }
@@ -25,8 +24,6 @@ namespace Personnel_Department.Controllers
         public DepartmentController()
         {
             dbConnect = new ApplicationContext();
-            //LastDepartments = GetLastName();
-            //LastDepartmentInformationUsers = GetLastUser();
             Departments = GetDepartment();
         }
 
