@@ -8,10 +8,7 @@ namespace Personnel_Department.Controllers
 {
     class DepartmentController
     {
-        
         public List<DepartmentInfo> Departments = new List<DepartmentInfo>();
-        public List<DepartmentInformationName> LastDepartments = new List<DepartmentInformationName>();
-        public List<DepartmentInformationUser> LastDepartmentInformationUsers = new List<DepartmentInformationUser>();
 
         public string ComentName { get; private set; }
         public DateTime DataName { get; private set; }
@@ -24,8 +21,6 @@ namespace Personnel_Department.Controllers
         public DepartmentController()
         {
             using ApplicationContext dbConnect = new ApplicationContext();
-            //LastDepartments = GetLastName();
-            //LastDepartmentInformationUsers = GetLastUser();
             Departments = GetDepartment();
         }
 
@@ -51,10 +46,10 @@ namespace Personnel_Department.Controllers
                                      {
                                          DepartmentId = d.DepartmentId,
                                          Coment = d.Coment,
-                                         Name= d.Name,
-                                         
+                                         Name = d.Name,
+                                         DepartmentInformationNameId = d.DepartmentInformationNameId,
                                          DateOfOrder = d.DateOfOrder,
-
+                                         Departments = d.Departments
                                      };
 
             return lastDepartmentName.ToList();
@@ -64,7 +59,7 @@ namespace Personnel_Department.Controllers
         /// получат список  последний зав отделений
         /// </summary>
         /// <returns></returns>
-        private List<DepartmentInformationUser> GetLastUser()
+        private List<DepartmentInformationUsers> GetLastUser()
         {
             using ApplicationContext dbConnect = new ApplicationContext();
             try
@@ -80,21 +75,21 @@ namespace Personnel_Department.Controllers
                                          let m = g.DateTime
                                          from d in dbConnect.DepartmentInformationUsers
                                          where d.DateOfOrder == m
-                                         select new DepartmentInformationUser()
+                                         select new DepartmentInformationUsers()
                                          {
-
+                                             Departments = d.Departments,
                                              DepartmentId = d.DepartmentId,
                                              Coment = d.Coment,
                                              UserId = d.UserId,
-                                            
+                                             DepartmentInformationUserId = d.DepartmentInformationUserId,
                                              DateOfOrder = d.DateOfOrder,
-                                             Users=d.Users
+                                             Users = d.Users
                                          };
                 return LastDepartmentName.ToList();
             }
             catch (Exception ex)
             {
-                throw new Exception("Error DB " + ex.Message);
+                throw ex.InnerException;
             }
         }
 
@@ -114,26 +109,24 @@ namespace Personnel_Department.Controllers
     internal class DepartmentInfo
     {
         public DepartmentInformationName DepartmentInformationName { get; }
-        public DepartmentInformationUser DepartmentInformationUser { get; }
+        public DepartmentInformationUsers DepartmentInformationUsers { get; }
 
-        public DepartmentInfo(DepartmentInformationName departmentInformationName, DepartmentInformationUser departmentInformationUser)
+        public DepartmentInfo(DepartmentInformationName departmentInformationName, DepartmentInformationUsers departmentInformationUsers)
         {
             DepartmentInformationName = departmentInformationName;
-            DepartmentInformationUser = departmentInformationUser;
+            DepartmentInformationUsers = departmentInformationUsers;
         }
 
         public override bool Equals(object obj)
         {
             return obj is DepartmentInfo other &&
                    EqualityComparer<DepartmentInformationName>.Default.Equals(DepartmentInformationName, other.DepartmentInformationName) &&
-                   EqualityComparer<DepartmentInformationUser>.Default.Equals(DepartmentInformationUser, other.DepartmentInformationUser);
+                   EqualityComparer<DepartmentInformationUsers>.Default.Equals(DepartmentInformationUsers, other.DepartmentInformationUsers);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(DepartmentInformationName, DepartmentInformationUser);
+            return HashCode.Combine(DepartmentInformationName, DepartmentInformationUsers);
         }
     }
 }
-
-                            

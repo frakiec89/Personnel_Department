@@ -8,7 +8,6 @@ namespace Personnel_Department.BL.ModelDataBase
     /// </summary>
     public class Department
     {
-      [Key]
       public  int  DepartmentId { get; set; }
       public string Address { get; set; }
     }

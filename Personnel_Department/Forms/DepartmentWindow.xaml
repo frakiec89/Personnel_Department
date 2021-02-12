@@ -34,7 +34,7 @@
                             <Image Source="{Binding ImagePath}"/>
                         </Border>
                         <Label Content="{Binding DepartmentInformationName.Name}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Label_MouseDoubleClick"/>
-                        <Label Content="{Binding DepartmentInformationUser.Users.Name }" Grid.Row="2" Grid.Column="1"/>
+                        <Label Content="{Binding DepartmentInformationUsers.Users.Name }" Grid.Row="2" Grid.Column="1"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
