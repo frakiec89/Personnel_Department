@@ -8,7 +8,7 @@ namespace Personnel_Department.Controllers
 {
     class DepartmentController
     {
-        ApplicationContext dbConnect;
+        
         public List<DepartmentInfo> Departments = new List<DepartmentInfo>();
        
 
@@ -32,6 +32,7 @@ namespace Personnel_Department.Controllers
         /// <returns></returns>
         private List<DepartmentInformationName> GetLastName()
         {
+            using ApplicationContext dbConnect = new ApplicationContext();
             var lastDepartmentName = from dep in dbConnect.Departments
                                      join d in dbConnect.DepartmentInformationNames
                                      on dep.DepartmentId equals d.DepartmentId
@@ -48,9 +49,9 @@ namespace Personnel_Department.Controllers
                                          DepartmentId = d.DepartmentId,
                                          Coment = d.Coment,
                                          Name= d.Name,
-                                         DepartmentInformationNameId = d.DepartmentInformationNameId,
+                                         
                                          DateOfOrder = d.DateOfOrder,
-                                         Departments=d.Departments
+
                                      };
 
             return lastDepartmentName.ToList();
@@ -62,6 +63,7 @@ namespace Personnel_Department.Controllers
         /// <returns></returns>
         private List<DepartmentInformationUser> GetLastUser()
         {
+            using ApplicationContext dbConnect = new ApplicationContext();
             try
             {
                 var LastDepartmentName = from dep in dbConnect.Departments
@@ -77,11 +79,11 @@ namespace Personnel_Department.Controllers
                                          where d.DateOfOrder == m
                                          select new DepartmentInformationUser()
                                          {
-                                             Departments=d.Departments,
+
                                              DepartmentId = d.DepartmentId,
                                              Coment = d.Coment,
                                              UserId = d.UserId,
-                                             DepartmentInformationUserId = d.DepartmentInformationUserId,
+                                            
                                              DateOfOrder = d.DateOfOrder,
                                              Users=d.Users
                                          };

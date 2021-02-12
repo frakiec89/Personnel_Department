@@ -3,11 +3,10 @@
     /// <summary>
     /// информация  отделения - На случай  переименования 
     /// </summary>
-    public  class DepartmentInformationName
+    public  class DepartmentInformationName: Department
     {
+
        public int DepartmentInformationNameId { get; set; }
-       
-       public int DepartmentId { get; set; }
        public virtual Department Departments { get; set; }
        
        
