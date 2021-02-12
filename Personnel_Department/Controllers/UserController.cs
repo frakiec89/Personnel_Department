@@ -1,19 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Personnel_Department.BL.ModelDataBase;
+﻿using Personnel_Department.BL.ModelDataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Personnel_Department.Controllers
 {
     class UserController
     {
-        readonly ApplicationContext dbConnect = new ApplicationContext();
-        public List<User> users;
+        public List<User> Users { get; set; }
 
-        public List<User> Refresh () => users = dbConnect.Users.ToList();
+        public List<User> Refresh()
+        {
+            using ApplicationContext dbConnect = new ApplicationContext();
+            return Users = dbConnect.Users.ToList();
+        }
 
 
         /// <summary>
@@ -24,7 +24,8 @@ namespace Personnel_Department.Controllers
         {
             try
             {
-                users = dbConnect.Users.ToList();
+                using ApplicationContext dbConnect = new ApplicationContext();
+                Users = dbConnect.Users.ToList();
             }
             catch (Exception ex)
             {
@@ -39,7 +40,8 @@ namespace Personnel_Department.Controllers
         {
             try
             {
-                users = dbConnect.Users.ToList();
+                using ApplicationContext dbConnect = new ApplicationContext();
+                Users = dbConnect.Users.ToList();
             }
             catch
             {

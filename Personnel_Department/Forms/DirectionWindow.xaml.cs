@@ -30,5 +30,16 @@ namespace Personnel_Department.Forms
             window.Show();
             Close();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Controllers.DiractionController diractionController = new Controllers.DiractionController();
+            LbMain.ItemsSource = diractionController.Directions;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
