@@ -7,6 +7,9 @@ namespace Personnel_Department.Controllers
 {
     class UserController
     {
+        /// <summary>
+        /// Список пользователь 
+        /// </summary>
         public List<User> Users { get; set; }
 
         public List<User> Refresh()
