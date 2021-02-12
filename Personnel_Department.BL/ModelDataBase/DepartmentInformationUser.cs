@@ -4,7 +4,7 @@
     /// <summary>
     /// класс для переназначения  зав Отделением 
     /// </summary>
-    public   class DepartmentInformationUser
+    public class DepartmentInformationUser
     {
         public int DepartmentInformationUserId { get; set; }
 
@@ -13,17 +13,20 @@
 
         public System.DateTime DateOfOrder { get; set; }
 
+        
         public int UserId { get; set; }
         /// <summary>
         /// Зав отделением 
         /// </summary>
         public virtual User Users { get; set; }
 
-
         /// комментарии  по  поводу назначения
         public string Coment { get; set; }
-        public string Name { get; set; }
-        public int  DepartmentInformationNameId { get; set; }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 
     

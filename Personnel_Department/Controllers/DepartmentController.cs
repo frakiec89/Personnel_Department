@@ -100,13 +100,8 @@ namespace Personnel_Department.Controllers
                                 join d in GetLastName()
                                 on tableU.DepartmentId equals d.DepartmentId
                                 select new DepartmentInfo(
-                                        d.Departments,
-                                        d.Coment,
-                                        d.Name,
-                                        d.DateOfOrder,
-                                        tableU.UserId,
-                                        tableU.Coment,
-                                        tableU.DateOfOrder
+                                    tableU,
+                                    d
                                 );
             return deparmentInfo.ToList();
         }
@@ -114,26 +109,14 @@ namespace Personnel_Department.Controllers
 
     internal class DepartmentInfo
     {
-        public Department Departments { get; }
-        public string ComentName { get; }
-        public string Name { get; }
-        public DateTime DataName { get; }
-        public int UserId { get; }
-        public string ComentUser { get; }
-        public DateTime DateOfOrder { get; }
+        public DepartmentInformationUser TableU { get; }
+        public DepartmentInformationName D { get; }
 
-        public DepartmentInfo(Department departmentId, string comentName, string name, DateTime dataName, int userId, string comentUser, DateTime dateOfOrder)
+        public DepartmentInfo(DepartmentInformationUser tableU, DepartmentInformationName d)
         {
-            Departments = departmentId;
-            ComentName = comentName;
-            Name = name;
-            DataName = dataName;
-            UserId = userId;
-            ComentUser = comentUser;
-            DateOfOrder = dateOfOrder;
+            TableU = tableU;
+            D = d;
         }
-
-       
     }
 }
 
