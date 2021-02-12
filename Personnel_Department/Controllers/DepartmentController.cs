@@ -53,7 +53,8 @@ namespace Personnel_Department.Controllers
                                          Coment = d.Coment,
                                          Name= d.Name,
                                          DepartmentInformationNameId = d.DepartmentInformationNameId,
-                                         DateOfOrder = d.DateOfOrder
+                                         DateOfOrder = d.DateOfOrder,
+                                         Departments=d.Departments
                                      };
 
             return lastDepartmentName.ToList();
@@ -80,11 +81,13 @@ namespace Personnel_Department.Controllers
                                          where d.DateOfOrder == m
                                          select new DepartmentInformationUser()
                                          {
+                                             Departments=d.Departments,
                                              DepartmentId = d.DepartmentId,
                                              Coment = d.Coment,
                                              UserId = d.UserId,
                                              DepartmentInformationUserId = d.DepartmentInformationUserId,
-                                             DateOfOrder = d.DateOfOrder
+                                             DateOfOrder = d.DateOfOrder,
+                                             Users=d.Users
                                          };
                 return LastDepartmentName.ToList();
             }
@@ -100,8 +103,8 @@ namespace Personnel_Department.Controllers
                                 join d in GetLastName()
                                 on tableU.DepartmentId equals d.DepartmentId
                                 select new DepartmentInfo(
-                                    tableU,
-                                    d
+                                    d,
+                                    tableU
                                 );
             return deparmentInfo.ToList();
         }
@@ -109,13 +112,25 @@ namespace Personnel_Department.Controllers
 
     internal class DepartmentInfo
     {
-        public DepartmentInformationUser TableU { get; }
-        public DepartmentInformationName D { get; }
+        public DepartmentInformationName DepartmentInformationName { get; }
+        public DepartmentInformationUser DepartmentInformationUser { get; }
 
-        public DepartmentInfo(DepartmentInformationUser tableU, DepartmentInformationName d)
+        public DepartmentInfo(DepartmentInformationName departmentInformationName, DepartmentInformationUser departmentInformationUser)
         {
-            TableU = tableU;
-            D = d;
+            DepartmentInformationName = departmentInformationName;
+            DepartmentInformationUser = departmentInformationUser;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is DepartmentInfo other &&
+                   EqualityComparer<DepartmentInformationName>.Default.Equals(DepartmentInformationName, other.DepartmentInformationName) &&
+                   EqualityComparer<DepartmentInformationUser>.Default.Equals(DepartmentInformationUser, other.DepartmentInformationUser);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(DepartmentInformationName, DepartmentInformationUser);
         }
     }
 }
