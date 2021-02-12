@@ -53,7 +53,8 @@ namespace Personnel_Department.Controllers
                                          Coment = d.Coment,
                                          Name= d.Name,
                                          DepartmentInformationNameId = d.DepartmentInformationNameId,
-                                         DateOfOrder = d.DateOfOrder
+                                         DateOfOrder = d.DateOfOrder,
+                                         Departments=d.Departments
                                      };
 
             return lastDepartmentName.ToList();
@@ -80,11 +81,13 @@ namespace Personnel_Department.Controllers
                                          where d.DateOfOrder == m
                                          select new DepartmentInformationUser()
                                          {
+                                             Departments=d.Departments,
                                              DepartmentId = d.DepartmentId,
                                              Coment = d.Coment,
                                              UserId = d.UserId,
                                              DepartmentInformationUserId = d.DepartmentInformationUserId,
-                                             DateOfOrder = d.DateOfOrder
+                                             DateOfOrder = d.DateOfOrder,
+                                             Users=d.Users
                                          };
                 return LastDepartmentName.ToList();
             }
@@ -100,13 +103,8 @@ namespace Personnel_Department.Controllers
                                 join d in GetLastName()
                                 on tableU.DepartmentId equals d.DepartmentId
                                 select new DepartmentInfo(
-                                        d.Departments,
-                                        d.Coment,
-                                        d.Name,
-                                        d.DateOfOrder,
-                                        tableU.UserId,
-                                        tableU.Coment,
-                                        tableU.DateOfOrder
+                                    d,
+                                    tableU
                                 );
             return deparmentInfo.ToList();
         }
@@ -114,26 +112,26 @@ namespace Personnel_Department.Controllers
 
     internal class DepartmentInfo
     {
-        public Department Departments { get; }
-        public string ComentName { get; }
-        public string Name { get; }
-        public DateTime DataName { get; }
-        public int UserId { get; }
-        public string ComentUser { get; }
-        public DateTime DateOfOrder { get; }
+        public DepartmentInformationName DepartmentInformationName { get; }
+        public DepartmentInformationUser DepartmentInformationUser { get; }
 
-        public DepartmentInfo(Department departmentId, string comentName, string name, DateTime dataName, int userId, string comentUser, DateTime dateOfOrder)
+        public DepartmentInfo(DepartmentInformationName departmentInformationName, DepartmentInformationUser departmentInformationUser)
         {
-            Departments = departmentId;
-            ComentName = comentName;
-            Name = name;
-            DataName = dataName;
-            UserId = userId;
-            ComentUser = comentUser;
-            DateOfOrder = dateOfOrder;
+            DepartmentInformationName = departmentInformationName;
+            DepartmentInformationUser = departmentInformationUser;
         }
 
-       
+        public override bool Equals(object obj)
+        {
+            return obj is DepartmentInfo other &&
+                   EqualityComparer<DepartmentInformationName>.Default.Equals(DepartmentInformationName, other.DepartmentInformationName) &&
+                   EqualityComparer<DepartmentInformationUser>.Default.Equals(DepartmentInformationUser, other.DepartmentInformationUser);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(DepartmentInformationName, DepartmentInformationUser);
+        }
     }
 }
 
