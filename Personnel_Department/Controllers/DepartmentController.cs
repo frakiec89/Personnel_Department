@@ -10,8 +10,7 @@ namespace Personnel_Department.Controllers
     {
         
         public List<DepartmentInfo> Departments = new List<DepartmentInfo>();
-        public List<DepartmentInformationName> LastDepartments = new List<DepartmentInformationName>();
-        public List<DepartmentInformationUser> LastDepartmentInformationUsers = new List<DepartmentInformationUser>();
+       
 
         public string ComentName { get; private set; }
         public DateTime DataName { get; private set; }
@@ -23,9 +22,7 @@ namespace Personnel_Department.Controllers
         /// <param name="visableDelete"></param>
         public DepartmentController()
         {
-            using ApplicationContext dbConnect = new ApplicationContext();
-            //LastDepartments = GetLastName();
-            //LastDepartmentInformationUsers = GetLastUser();
+            dbConnect = new ApplicationContext();
             Departments = GetDepartment();
         }
 
