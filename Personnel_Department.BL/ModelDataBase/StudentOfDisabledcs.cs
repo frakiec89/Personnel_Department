@@ -1,14 +1,13 @@
 ﻿namespace Personnel_Department.BL.ModelDataBase
 {
-
+    [System.ComponentModel.DataAnnotations.Schema.Table("StudentOfDisabled")]
     /// <summary>
     /// Студенты инвалиды
     /// </summary>
-    public class StudentOfDisabledcs
+    public class StudentOfDisabled: Student
     {
         public int StudentOfDisabledcsId { get; set; }
 
-        public int StudentId { get; set; }
         public virtual Student Students { get; set; }
 
         /// <summary>
