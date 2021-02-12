@@ -31,7 +31,7 @@ namespace Personnel_Department.Forms
             InitializeComponent();
             var user = (User)selectedObjUser;
             Controllers.UserController userController = new Controllers.UserController();
-            var selectedUser = userController.users.Find(x => x.UserId == user.UserId);
+            var selectedUser = userController.Users.Find(x => x.UserId == user.UserId);
             grids.DataContext = selectedUser;
         }
 
