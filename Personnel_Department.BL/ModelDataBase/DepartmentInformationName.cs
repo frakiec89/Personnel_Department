@@ -12,7 +12,7 @@
        
        
         public System.DateTime DateOfOrder { get; set; }
-       public  string Name { get; set; }
+        public  string Name { get; set; }
 
        /// <summary>
         ///  ///комментарии  по  поводу  переименования

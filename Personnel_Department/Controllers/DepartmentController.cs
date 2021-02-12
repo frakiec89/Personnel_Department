@@ -10,8 +10,13 @@ namespace Personnel_Department.Controllers
     class DepartmentController
     {
         ApplicationContext dbConnect;
+        public List<DepartmentInfo> Departments = new List<DepartmentInfo>();
         public List<DepartmentInformationName> LastDepartments = new List<DepartmentInformationName>();
         public List<DepartmentInformationUser> LastDepartmentInformationUsers = new List<DepartmentInformationUser>();
+
+        public string ComentName { get; private set; }
+        public DateTime DataName { get; private set; }
+        public string ComentUser { get; private set; }
 
         /// <summary>
         /// показывать  удаленных / да нет 
@@ -20,8 +25,9 @@ namespace Personnel_Department.Controllers
         public DepartmentController()
         {
             dbConnect = new ApplicationContext();
-            LastDepartments = GetLastName();
-            LastDepartmentInformationUsers = GetLastUser();
+            //LastDepartments = GetLastName();
+            //LastDepartmentInformationUsers = GetLastUser();
+            Departments = GetDepartment();
         }
 
         /// <summary>
@@ -82,57 +88,52 @@ namespace Personnel_Department.Controllers
                                          };
                 return LastDepartmentName.ToList();
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Error DB");
+                throw new Exception("Error DB " + ex.Message);
             }
         }
 
-
-       
-
+        private List<DepartmentInfo> GetDepartment()
+        {
+            var deparmentInfo = from tableU in GetLastUser()
+                                join d in GetLastName()
+                                on tableU.DepartmentId equals d.DepartmentId
+                                select new DepartmentInfo(
+                                        d.Departments,
+                                        d.Coment,
+                                        d.Name,
+                                        d.DateOfOrder,
+                                        tableU.UserId,
+                                        tableU.Coment,
+                                        tableU.DateOfOrder
+                                );
+            return deparmentInfo.ToList();
+        }
     }
 
-    internal class DepatmentInfo
+    internal class DepartmentInfo
     {
-        public int DepartmentId { get; }
-        public int DepartmentInformationNameId { get; }
+        public Department Departments { get; }
+        public string ComentName { get; }
         public string Name { get; }
-        public string Coment { get; }
-        public DateTime DateOfOrder { get; }
-        public string Coment1 { get; }
-        public DateTime DateOfOrder1 { get; }
+        public DateTime DataName { get; }
         public int UserId { get; }
+        public string ComentUser { get; }
+        public DateTime DateOfOrder { get; }
 
-        public DepatmentInfo(int departmentId, int departmentInformationNameId, string name, string coment, DateTime dateOfOrder, string coment1, DateTime dateOfOrder1, int userId)
+        public DepartmentInfo(Department departmentId, string comentName, string name, DateTime dataName, int userId, string comentUser, DateTime dateOfOrder)
         {
-            DepartmentId = departmentId;
-            DepartmentInformationNameId = departmentInformationNameId;
+            Departments = departmentId;
+            ComentName = comentName;
             Name = name;
-            Coment = coment;
-            DateOfOrder = dateOfOrder;
-            Coment1 = coment1;
-            DateOfOrder1 = dateOfOrder1;
+            DataName = dataName;
             UserId = userId;
+            ComentUser = comentUser;
+            DateOfOrder = dateOfOrder;
         }
 
-        public override bool Equals(object obj)
-        {
-            return obj is DepatmentInfo other &&
-                   DepartmentId == other.DepartmentId &&
-                   DepartmentInformationNameId == other.DepartmentInformationNameId &&
-                   Name == other.Name &&
-                   Coment == other.Coment &&
-                   DateOfOrder == other.DateOfOrder &&
-                   Coment1 == other.Coment1 &&
-                   DateOfOrder1 == other.DateOfOrder1 &&
-                   UserId == other.UserId;
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(DepartmentId, DepartmentInformationNameId, Name, Coment, DateOfOrder, Coment1, DateOfOrder1, UserId);
-        }
+       
     }
 }
 

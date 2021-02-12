@@ -22,7 +22,8 @@
 
         /// комментарии  по  поводу назначения
         public string Coment { get; set; }
-
+        public string Name { get; set; }
+        public int  DepartmentInformationNameId { get; set; }
     }
 
     

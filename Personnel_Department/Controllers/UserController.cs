@@ -26,9 +26,9 @@ namespace Personnel_Department.Controllers
             {
                 users = dbConnect.Users.ToList();
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Error  connect BD");
+                throw new Exception("Error  connect BD " + ex.Message);
             }
         }
 
