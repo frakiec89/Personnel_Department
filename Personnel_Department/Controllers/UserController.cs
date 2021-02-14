@@ -1,4 +1,6 @@
-﻿using Personnel_Department.BL.ModelDataBase;
+﻿using Microsoft.EntityFrameworkCore;
+
+using Personnel_Department.BL.ModelDataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace Personnel_Department.Controllers
         public List<User> Refresh()
         {
             using ApplicationContext dbConnect = new ApplicationContext();
-            return Users = dbConnect.Users.ToList();
+            return Users = dbConnect.Users.AsNoTracking().ToList();
         }
 
 
@@ -28,7 +30,7 @@ namespace Personnel_Department.Controllers
             try
             {
                 using ApplicationContext dbConnect = new ApplicationContext();
-                Users = dbConnect.Users.ToList();
+                Users = dbConnect.Users.AsNoTracking().ToList();
             }
             catch (Exception ex)
             {
@@ -44,7 +46,7 @@ namespace Personnel_Department.Controllers
             try
             {
                 using ApplicationContext dbConnect = new ApplicationContext();
-                Users = dbConnect.Users.ToList();
+                Users = dbConnect.Users.AsNoTracking().ToList();
             }
             catch
             {
