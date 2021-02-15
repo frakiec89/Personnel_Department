@@ -47,5 +47,12 @@ namespace Personnel_Department
             window.Show();
             Close();
         }
+
+        private void BtSpecialty_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new Forms.SpecialtyWindow();
+            window.Show();
+            Close();
+        }
     }
 }

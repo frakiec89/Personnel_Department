@@ -7,7 +7,6 @@
     public class StudenOfOrphant: Student
     {
         public int StudenOfOrphantId { get; set; }
-        public virtual Student Student { get; set; }
         public System.DateTime Date { get; set; }
         public string Coment { get; set; }
     }

@@ -9,7 +9,7 @@ namespace Personnel_Department
         {
             //optionsBuilder.UseMySQL("server=192.168.10.148;port=3306;user=User1;password=DE_01392;database=Personnel_Department_DB_AHT");
             optionsBuilder.UseSqlServer("Server=192.168.10.160;Initial Catalog=Personnel_Department_Db; user id =IS_18_02;Password=IS_18_02;");
-         //   optionsBuilder.UseNpgsql("Host=192.168.10.160;Port=5432;Database=Personnel_Department_DB_AHT;Username=stud;Password=stud");
+          //optionsBuilder.UseNpgsql("Host=192.168.10.160;Port=5432;Database=Personnel_Department_DB_AHT;Username=stud;Password=stud");
         }
             #region Таблицы
         public DbSet<User> Users { get; set; }
@@ -23,7 +23,7 @@ namespace Personnel_Department
         public DbSet<Specialty> Specialties { get; set; }
         public DbSet<GroupOfCurator> GrupOfCurators { get; set; }
         public DbSet<GroupOfDepartament> GrupOfDepartaments { get; set; }
-        public DbSet<StudentOfDisabled> StudentOfDisabledcs { get; set; }
+        public DbSet<StudentOfDisabled> StudentOfDisableds { get; set; }
         public DbSet<StudentOfExternal> StudentOfExternal { get; set; }
         public DbSet<StudentOfGrups> StudentOfGrups { get; set; }
         public DbSet<SpecialtyInformation> SpecialtyInformation { get; set; }

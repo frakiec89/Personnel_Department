@@ -18,6 +18,7 @@
             <Button x:Name="btCurators" Content="Список кураторов" Margin="15,15,15,15" Click="BtCurators_Click"/>
             <Button x:Name="btDeparments" Content="Список Отделений" Margin="15,15,15,15" Click="BtDeparments_Click"/>
             <Button x:Name="btDeiraction" Content="Список Направлений" Margin="15,15,15,15" Click="BtDeiraction_Click"/>
+            <Button x:Name="btSpecialty" Content="Список специальностей" Margin="15,15,15,15" Click="BtSpecialty_Click"/>
         </StackPanel>
     </Grid>
 </Window>

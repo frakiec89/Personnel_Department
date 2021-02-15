@@ -6,14 +6,12 @@
     /// </summary>
     public class StudentOfDisabled: Student
     {
-        public int StudentOfDisabledcsId { get; set; }
-
-        public virtual Student Students { get; set; }
+        public int StudentOfDisabledId { get; set; }
 
         /// <summary>
         /// Вид  инвалидности
         /// </summary>
-        public string TypeDisabledcs { get; set; }
+        public string TypeDisabled { get; set; }
 
         /// <summary>
         /// Дата выдачи  справки
