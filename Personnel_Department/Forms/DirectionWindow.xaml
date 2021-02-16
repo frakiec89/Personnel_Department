@@ -17,7 +17,8 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width= "100*"/>
+                            <ColumnDefinition Width="10*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -28,7 +29,20 @@
                         <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
                             <Image Source="{Binding ImagePath}"/>
                         </Border>
-                        <Label Content="{Binding Name}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1"/>
+                      
+                        <Label  Grid.Column="1" Grid.Row="0"  
+                            HorizontalAlignment="Stretch"
+                            Content="{Binding Name}" 
+                             Margin="10,1,1,1"/>
+
+                        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+                            <Button HorizontalAlignment="Center" 
+                                    VerticalAlignment="Bottom"
+                                    Margin="5" x:Name="btDell" Content="ред." Click="btDell_Click"/>
+                            <Button HorizontalAlignment="Center" 
+                                     VerticalAlignment="Bottom"
+                                    Margin="5" x:Name="btCange" Content="уд." Click="btCange_Click"/> 
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

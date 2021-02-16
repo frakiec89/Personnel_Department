@@ -74,5 +74,23 @@ namespace Personnel_Department.Controllers
                 dbConnect.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// Удаление направления
+        /// </summary>
+        /// <param name="id">код направления</param>
+        public static void DellDiraction ( int  id)
+        {
+            try
+            {
+                using ApplicationContext dbConnect = new ApplicationContext();
+                dbConnect.Directions.Remove(dbConnect.Directions.Find(id));
+                dbConnect.SaveChanges();
+            }
+            catch ( Exception ex)
+            {
+                throw new Exception("Ошибка удаления " + ex.Message);
+            }
+        }
     }
 }
