@@ -47,7 +47,7 @@ namespace Personnel_Department.Forms
         private void BtSave_Click(object sender, RoutedEventArgs e)
         {
             User newUser = new User() { Name = TbName.Text, Surname = TbSurname.Text, Patronumic = TbPatronumic.Text, DateRegistrations = DpDateRegistrations.SelectedDate};
-            MessageBox.Show(Controllers.UserController.EditOrCreateUser(newUser));
+            MessageBox.Show(Controllers.UserController.CreateUser(newUser));
             Close();
         }
     }
