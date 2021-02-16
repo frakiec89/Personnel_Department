@@ -15,5 +15,20 @@ namespace Personnel_Department.Controllers
             using ApplicationContext applicationContext = new();
             Specialties = applicationContext.Specialties.AsNoTracking().ToList();
         }
+        public static List<string> GetNameSpecialty()
+        {
+            List<string> Names = new();
+            try
+            {
+                using ApplicationContext applicationContext = new();
+                foreach (var item in applicationContext.Specialties)
+                    Names.Add(item.Name);
+            }
+            catch
+            {
+                throw new Exception().InnerException;
+            }
+            return Names;
+        }
     }
 }
