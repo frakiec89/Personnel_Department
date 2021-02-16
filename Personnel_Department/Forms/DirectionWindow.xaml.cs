@@ -37,9 +37,19 @@ namespace Personnel_Department.Forms
             LbMain.ItemsSource = diractionController.Directions;
         }
 
+        /// <summary>
+        /// Добавить новое направление
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            AdditionalForms.AddDirectionWindow window = new AdditionalForms.AddDirectionWindow();
+            if ( window.ShowDialog() == true)
+            {
+                Controllers.DiractionController diractionController = new Controllers.DiractionController();
+                LbMain.ItemsSource = diractionController.Directions;
+            }
         }
     }
 }
