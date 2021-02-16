@@ -31,29 +31,28 @@ namespace Personnel_Department.Forms.AdditionalForms
 
         private void BtSave_Click(object sender, RoutedEventArgs e)
         {
+            SpecialtyInformation newSpecInfo = null;
             string baseEndNoBase = null;
             if ((bool)rbBase.IsChecked)
                 baseEndNoBase = (string)rbBase.Content;
 
             else if ((bool)rbNoBase.IsChecked)
                 baseEndNoBase = (string)rbNoBase.Content;
-            else
-                MessageBox.Show("Выберите тип");
-
-            DateTime TrainingPeriod = new();
-            if (Int32.TryParse(TbTrainingPeriodY.Text, out int result) && Int32.TryParse(TbTrainingPeriodM.Text, out int result2))
-                TrainingPeriod = new(year: result, month: result2, day: 1);
-            else
-                MessageBox.Show("Дата введена не верно");
-
-            SpecialtyInformation newSpecInfo = new SpecialtyInformation()
+            try
             {
-                NameProfile = TbName.Text,
-                BaseEndNoBase = baseEndNoBase,
-                TrainingPeriod = TrainingPeriod,
-                SpecialtyId = ((Specialty)cbSpecialty.SelectedItem).SpecialtyId,
-                FormOfEducationId = ((FormOfEducation)cbFormOfEducation.SelectedItem).FormOfEducationId               
-            };
+                newSpecInfo = new SpecialtyInformation
+                    (
+                        ((Specialty)cbSpecialty.SelectedItem).SpecialtyId,
+                        TbName.Text,
+                        baseEndNoBase,
+                        ((FormOfEducation)cbFormOfEducation.SelectedItem).FormOfEducationId,
+                        TbTrainingPeriodY.Text, TbTrainingPeriodM.Text
+                     );
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             MessageBox.Show(Controllers.SpecialtyInfoController.EditOrCreateUser(newSpecInfo));
             Close();
         }

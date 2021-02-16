@@ -75,6 +75,22 @@ namespace Personnel_Department.Controllers
                 return ex.Message;
             }
         }
+        //public static string EditUser(User newUser)
+        //{
+        //    try
+        //    {
+        //        using (ApplicationContext dbConnect = new ApplicationContext())
+        //        {
+        //            dbConnect.Users.Update(newUser);
+        //            dbConnect.SaveChanges();
+        //        }
+        //        return "Сохранение прошло успешно";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return ex.Message;
+        //    }
+        //}
 
     }
 }

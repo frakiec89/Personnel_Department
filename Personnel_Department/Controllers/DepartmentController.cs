@@ -10,7 +10,7 @@ namespace Personnel_Department.Controllers
     {
         public List<DepartmentInfo> Departments = new List<DepartmentInfo>();
 
-        public string ComentName { get; private set; }
+        public string ComentName { get; init; }
         public DateTime DataName { get; private set; }
         public string ComentUser { get; private set; }
 
