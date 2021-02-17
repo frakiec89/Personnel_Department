@@ -13,7 +13,8 @@ namespace Personnel_Department.Controllers
         public SpecialtyController()
         {
             using ApplicationContext applicationContext = new();
-            Specialties = applicationContext.Specialties.AsNoTracking().ToList();
+
+            Specialties = applicationContext.Specialties.Include(x => x.Directions).ToList();
         }
         public static List<string> GetNameSpecialty()
         {

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Personnel_Department.BL.ModelDataBase
 {
@@ -10,5 +12,7 @@ namespace Personnel_Department.BL.ModelDataBase
     {
       public  int  DepartmentId { get; set; }
       public string Address { get; set; }
+
+      
     }
 }

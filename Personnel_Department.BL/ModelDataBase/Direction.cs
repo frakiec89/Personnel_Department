@@ -1,4 +1,6 @@
-﻿namespace Personnel_Department.BL.ModelDataBase
+﻿using System.Collections.Generic;
+
+namespace Personnel_Department.BL.ModelDataBase
 {
     /// <summary>
     /// направления // например  гуманитарное   и  тд
@@ -6,6 +8,7 @@
     public class Direction
     {
         public int DirectionId { get; set; }
-        public string Name { get;  set; } 
+        public string Name { get;  set; }
+       
     }
 }

@@ -30,6 +30,7 @@
                         </Border>
                         <Label Content="{Binding CodeSpecialty}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1"/>
                         <Label Content="{Binding Name}" Grid.Row="1" Grid.Column="1" Margin="10,1,1,1"/>
+                        <Label Content="{Binding Directions.Name}" Grid.Row="3" Grid.Column="1" Margin="10,1,1,1"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
