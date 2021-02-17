@@ -75,6 +75,16 @@ namespace Personnel_Department.Controllers
             }
         }
 
+        public void UpdateDiraction()
+        {
+            if (NewDirection != null)
+            {
+                using ApplicationContext dbConnect = new ApplicationContext();
+                dbConnect.Directions.Update(NewDirection);
+                dbConnect.SaveChanges();
+            }
+        }
+
         /// <summary>
         /// Удаление направления
         /// </summary>

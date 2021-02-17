@@ -38,10 +38,10 @@
                         <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
                             <Button HorizontalAlignment="Center" 
                                     VerticalAlignment="Bottom"
-                                    Margin="5" x:Name="btDell" Content="ред." Click="btDell_Click"/>
+                                    Margin="5" x:Name="btDell" Content="уд." Click="btDell_Click"/>
                             <Button HorizontalAlignment="Center" 
                                      VerticalAlignment="Bottom"
-                                    Margin="5" x:Name="btCange" Content="уд." Click="btCange_Click"/> 
+                                    Margin="5" x:Name="btCange" Content="ред." Click="btCange_Click"/> 
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

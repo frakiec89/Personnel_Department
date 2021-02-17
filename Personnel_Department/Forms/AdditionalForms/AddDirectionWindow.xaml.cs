@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Personnel_Department.BL.ModelDataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,7 @@ namespace Personnel_Department.Forms.AdditionalForms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btSave_Click(object sender, RoutedEventArgs e)
+        protected virtual void btSave_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -44,5 +45,38 @@ namespace Personnel_Department.Forms.AdditionalForms
                 MessageBox.Show(ex.Message);
             }
         }
+    }
+
+
+    public class CangeDirectionWindow : AddDirectionWindow
+    {
+        private Direction DirectionCange;
+
+       public CangeDirectionWindow (Direction direction): base ()
+       {
+            base.Title = "Редактирование";
+            btSave.Content = "Изменить";
+            DirectionCange = direction;
+            grids.DataContext = DirectionCange;
+       }
+
+        protected override void btSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DirectionCange = grids.DataContext as Direction;
+                Controllers.DiractionController controller = new Controllers.DiractionController(DirectionCange);
+                controller.UpdateDiraction();
+                MessageForms.MessageForms.MessageBoxMessage("Объект изменен в БД");
+                DialogResult = true;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageForms.MessageForms.MessageBoxMessage(ex.Message);
+            }
+        }
+
+
     }
 }
