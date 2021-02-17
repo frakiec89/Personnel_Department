@@ -37,5 +37,12 @@ namespace Personnel_Department.Forms
             window.ShowDialog();
             UpdateDb();
         }
+
+        private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var window = new AdditionalForms.AdditionalSpecialtyInfoWindow(LbMain.SelectedItem);
+            window.ShowDialog();
+            UpdateDb();
+        }
     }
 }

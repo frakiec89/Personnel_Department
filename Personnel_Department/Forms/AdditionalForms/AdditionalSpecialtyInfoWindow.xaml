@@ -18,11 +18,11 @@
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="LbSpecialty" Content="Специальность"/>
-                <ComboBox x:Name="cbSpecialty"/>
+                <ComboBox x:Name="cbSpecialty" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="LbName" Content="Название профиля"/>
-                <TextBox x:Name="TbName"/>
+                <TextBox x:Name="TbName" Text="{Binding NameProfile}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30">
                 <RadioButton x:Name="rbNoBase" Content="Углубленно"/>
@@ -35,8 +35,8 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="LbTrainingPeriod" Content="Срок обучения"/>
-                <TextBox x:Name="TbTrainingPeriodY" Text="Год"/>
-                <TextBox x:Name="TbTrainingPeriodM" Text="Месяц"/>
+                <TextBox x:Name="TbTrainingPeriodY"  Text="{Binding GetTrainingPeriod}"/>
+                <TextBox x:Name="TbTrainingPeriodM"/>
             </StackPanel>
                 <Button x:Name="btSave" Content="Сохранить" Grid.Row="1" Visibility="Hidden" Click="BtSave_Click"/>
         </StackPanel>

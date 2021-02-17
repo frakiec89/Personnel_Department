@@ -28,7 +28,7 @@
                         <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
                             <Image Source="{Binding ImagePath}"/>
                         </Border>
-                        <Label Content="{Binding NameProfile}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1">
+                        <Label Content="{Binding NameProfile}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Label_MouseDoubleClick">
                             <Label.ToolTip>
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock Text="{Binding NameProfile}"/>
@@ -37,7 +37,7 @@
                                 </StackPanel>
                             </Label.ToolTip>
                         </Label>
-                        <Label Content="{Binding TrainingPeriod}" Grid.Row="1" Grid.Column="1"/>
+                        <Label Content="{Binding GetTrainingPeriod}" Grid.Row="1" Grid.Column="1"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
