@@ -24,11 +24,15 @@ namespace Personnel_Department.Forms
         public SpecialtyWindow()
         {
             InitializeComponent();
+         
+
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LbMain.ItemsSource = new SpecialtyController().Specialties;
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,9 +42,18 @@ namespace Personnel_Department.Forms
             Close();
         }
 
+        /// <summary>
+        /// Добавить специальность
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("В разработке");
+            Forms.AdditionalForms.AddSpeciallity add = new AdditionalForms.AddSpeciallity();
+            if (add.ShowDialog() == true)
+            {
+                //todo обновить  контент 
+            }
         }
     }
 }

@@ -26,11 +26,22 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
-                            <Image Source="{Binding ImagePath}"/>
+                            <Image Source="\Image\logos.gif.png"/>
                         </Border>
-                        <Label Content="{Binding CodeSpecialty}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1"/>
-                        <Label Content="{Binding Name}" Grid.Row="1" Grid.Column="1" Margin="10,1,1,1"/>
-                        <Label Content="{Binding Directions.Name}" Grid.Row="3" Grid.Column="1" Margin="10,1,1,1"/>
+
+                        <StackPanel  Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                            <Label  Margin="10,1,1,1">(</Label>
+                            <Label Content="{Binding CodeSpecialty}" 
+                                    Margin="1,1,1,1"/>
+                            <Label  Margin="1,1,1,1">)</Label>
+                            <Label Content="{Binding Name}" Margin="10,1,1,1"/>
+                        </StackPanel>
+                        
+                        <StackPanel  Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+                            <Label  Margin="10,1,1,1">Направление: </Label>
+                            <Label Content="{Binding Directions.Name}"
+                               Margin="1,1,1,1"></Label>
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
