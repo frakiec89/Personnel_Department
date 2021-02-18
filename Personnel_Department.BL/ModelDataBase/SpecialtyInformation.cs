@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Personnel_Department.BL.ModelDataBase
@@ -56,7 +57,8 @@ namespace Personnel_Department.BL.ModelDataBase
                 throw new ArgumentException("Дата введена не верно");
         }
 
-        public int  SpecialtyinformationId { get; set; }
+       public int  SpecialtyinformationId { get; set; }
+
        public int SpecialtyId { get; set; }
        public  virtual Specialty Specialtys { get; set; }
 
@@ -69,22 +71,25 @@ namespace Personnel_Department.BL.ModelDataBase
         /// углубленно - не углубленно
         /// </summary>
         public string BaseEndNoBase { get; set; }
-       /// <summary>
+
+
+        /// <summary>
         /// срок  обучения , например  4 года 10 месяцев
         /// </summary>
-       public  System.DateTime TrainingPeriod {
+        public  System.DateTime TrainingPeriod {
             get;
             set; }
 
         [NotMapped]
-        public virtual string GetTrainingPeriod { get => TrainingPeriod.Year.ToString()+" г."+ ' ' + TrainingPeriod.Month.ToString()+" м. "; }
+       public virtual string GetTrainingPeriod { get => TrainingPeriod.Year.ToString()+" г."+ ' ' + TrainingPeriod.Month.ToString()+" м. "; }
+       
        public  int   FormOfEducationId { get; set; }
        public FormOfEducation FormOfEducations { get; set; }
-
 
         /// <summary>
         /// Если  да  то  не  показывать 
         /// </summary>
         public bool ISDeleted { get; set; }
+        public override string ToString() => NameProfile;
     }
 }

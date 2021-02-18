@@ -18,27 +18,33 @@
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="LbSpecialty" Content="Специальность"/>
+                <Label x:Name="lbSpecialtyC" Visibility="Collapsed"/>
                 <ComboBox x:Name="cbSpecialty" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="LbName" Content="Название профиля"/>
+                <Label x:Name="lbNameCon" Content="{Binding NameProfile}" Visibility="Collapsed"/>
                 <TextBox x:Name="TbName" Text="{Binding NameProfile}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30">
+                <Label x:Name="lbBaseNoBase" Content="{Binding BaseEndNoBase}"/>
                 <RadioButton x:Name="rbNoBase" Content="Углубленно"/>
                 <RadioButton x:Name="rbBase" Content="База" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="LbFormOfEducation" Content="Форма обучения"/>
+                <Label x:Name="lbFormOfEducationC" Content="{Binding FormOfEducations.Name}"/>
                 <ComboBox x:Name ="cbFormOfEducation"/>
                 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="LbTrainingPeriod" Content="Срок обучения"/>
-                <TextBox x:Name="TbTrainingPeriodY"  Text="{Binding GetTrainingPeriod}"/>
+                <Label x:Name="lbTrainingPeriodC" Content="{Binding GetTrainingPeriod}"/>
+                <TextBox x:Name="TbTrainingPeriodY"/>
                 <TextBox x:Name="TbTrainingPeriodM"/>
             </StackPanel>
                 <Button x:Name="btSave" Content="Сохранить" Grid.Row="1" Visibility="Hidden" Click="BtSave_Click"/>
+            <Button x:Name="btEdit" Content="Редактировать" Grid.Row="1" Visibility="Hidden" Click="BtEdit_Click"/>
         </StackPanel>
     </Grid>
 </Window>

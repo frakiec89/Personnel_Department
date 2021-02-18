@@ -33,9 +33,11 @@ namespace Personnel_Department.Forms
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            var window = new AdditionalForms.AdditionalSpecialtyInfoWindow();
-            window.ShowDialog();
-            UpdateDb();
+            //var window = new AdditionalForms.AdditionalSpecialtyInfoCreateWindow();
+            //window.ShowDialog();
+            //UpdateDb();
+            Window window = new();
+            window.Show();
         }
 
         private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -45,4 +47,5 @@ namespace Personnel_Department.Forms
             UpdateDb();
         }
     }
+    
 }
