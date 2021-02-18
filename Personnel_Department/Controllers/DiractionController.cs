@@ -1,5 +1,4 @@
 ﻿using Personnel_Department.BL.ModelDataBase;
-using Microsoft.EntityFrameworkCore.SqlServer.Update;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace Personnel_Department.Controllers
         /// <summary>
         /// Список направлений
         /// </summary>
-        public List<Direction> Directions { get; set; }
+        public List<Direction> Directions { get; init; }
         /// <summary>
         /// Новое направление 
         /// </summary>

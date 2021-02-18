@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personnel_Department.Forms"
         mc:Ignorable="d"
-        Title="SpecialtyWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Список специальностей" Height="450" Width="800" Loaded="Window_Loaded" Icon="/Forms/Icon.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="13*"/>
             <RowDefinition Height="204*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="LbMain" Grid.Row="1" >
+        <ListBox x:Name="lbMain" Grid.Row="1" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -47,8 +47,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Content="Назад" Click="Button_Click"/>
-            <Button Content="Добавить" Margin="110,0,0,0" Click="Button_Click_1" Width="272"/>
+            <Button Content="Назад" Click="Back_Click"/>
+            <Button Content="Добавить" Margin="110,0,0,0" Click="CreateSpecialty_Click" Width="272"/>
         </StackPanel>
     </Grid>
 </Window>

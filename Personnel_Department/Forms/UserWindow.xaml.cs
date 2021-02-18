@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Personnel_Department
 {
@@ -26,29 +16,27 @@ namespace Personnel_Department
 
         private async void UpdateDb()
         {
-            var userController = await Task.Run(() => new Controllers.UserController(true));
-            //TODO: ad
-            LbMain.ItemsSource = userController.Refresh();
+            Controllers.UserController userController = await Task.Run(() => new Controllers.UserController(true));
+            lbMain.ItemsSource = userController.Users;
             lbTimeRun.Visibility = Visibility.Collapsed;
         }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var window = new MainMenu();
+            MainMenu window = new MainMenu();
             window.Show();
             Close();
         }
 
-        private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void OpenAdditionalWindow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Forms.AdditionalUserWindow window = new Forms.AdditionalUserWindow(LbMain.SelectedItem);
+            Forms.AdditionalUserWindow window = new Forms.AdditionalUserEditWindow(lbMain.SelectedItem);
             window.ShowDialog();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void CreateUser_Click(object sender, RoutedEventArgs e)
         {
-            var window = new Forms.AdditionalUserWindow();
+            Forms.AdditionalUserWindow window = new Forms.AdditionalUserWindow();
             window.ShowDialog();
             UpdateDb();
         }

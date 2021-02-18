@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personnel_Department.Forms.AdditionalForms"
         mc:Ignorable="d"
-        Title="Добавить новое направление" Height="450" Width="800">
+        Title="Добавить новое направление" Height="450" Width="800" Icon="/Forms/Icon.ico">
     <Grid>
         <Grid x:Name="grids">
             <Grid.RowDefinitions>
@@ -21,13 +21,8 @@
                     <Label x:Name="LbName" Content="Название"/>
                     <TextBox x:Name="TbName" Text="{Binding Name}" Width="241"/>
                     <Button x:Name="btSave" Content="Добавить"
-                           Click="btSave_Click" 
-                            />
+                           Click="BtSave_Click" />
                 </StackPanel>
-                
-              
-               
-     
             </StackPanel>
         </Grid>
     </Grid>

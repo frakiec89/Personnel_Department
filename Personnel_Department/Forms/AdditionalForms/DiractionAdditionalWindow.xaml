@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personnel_Department.Forms.AdditionalForms"
         mc:Ignorable="d"
-        Title="DiractionAdditionalWindow" Height="246" Width="346">
+        Height="246" Width="346" Icon="/Forms/Icon.ico">
     <Grid x:Name="grids">
         <Grid.RowDefinitions>
             <RowDefinition Height="80*"/>
@@ -18,7 +18,7 @@
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Название"/>
-                <TextBox x:Name="TbSurname" Text="{Binding Surname}"/>
+                <TextBox x:Name="tbSurname" Text="{Binding Surname}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

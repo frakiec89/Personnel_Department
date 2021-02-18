@@ -4,7 +4,7 @@
     /// <summary>
     /// Студенты сироты
     /// </summary>
-    public class StudenOfOrphant: Student
+    public class StudenOfOrphant : Student
     {
         public int StudenOfOrphantId { get; set; }
         public System.DateTime Date { get; set; }

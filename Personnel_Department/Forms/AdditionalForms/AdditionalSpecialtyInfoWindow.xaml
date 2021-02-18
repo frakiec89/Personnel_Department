@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personnel_Department.Forms.AdditionalForms"
         mc:Ignorable="d"
-        Title="AdditionalSpecialtyInfoWindow" Height="450" Width="800">
+        Title="Информация об профиле" Height="450" Width="800" Loaded="Window_Loaded" Icon="/Forms/Icon.ico">
     <Grid x:Name="grids">
         <Grid.RowDefinitions>
             <RowDefinition Height="80*"/>
@@ -17,14 +17,14 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbSpecialty" Content="Специальность"/>
+                <Label x:Name="lbSpecialty" Content="Специальность"/>
                 <Label x:Name="lbSpecialtyC" Visibility="Collapsed"/>
                 <ComboBox x:Name="cbSpecialty" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbName" Content="Название профиля"/>
+                <Label x:Name="lbName" Content="Название профиля"/>
                 <Label x:Name="lbNameCon" Content="{Binding NameProfile}" Visibility="Collapsed"/>
-                <TextBox x:Name="TbName" Text="{Binding NameProfile}"/>
+                <TextBox x:Name="tbName" Text="{Binding NameProfile}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30">
                 <Label x:Name="lbBaseNoBase" Content="{Binding BaseEndNoBase}"/>
@@ -32,16 +32,16 @@
                 <RadioButton x:Name="rbBase" Content="База" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbFormOfEducation" Content="Форма обучения"/>
+                <Label x:Name="lbFormOfEducation" Content="Форма обучения"/>
                 <Label x:Name="lbFormOfEducationC" Content="{Binding FormOfEducations.Name}"/>
                 <ComboBox x:Name ="cbFormOfEducation"/>
                 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbTrainingPeriod" Content="Срок обучения"/>
+                <Label x:Name="lbTrainingPeriod" Content="Срок обучения"/>
                 <Label x:Name="lbTrainingPeriodC" Content="{Binding GetTrainingPeriod}"/>
-                <TextBox x:Name="TbTrainingPeriodY"/>
-                <TextBox x:Name="TbTrainingPeriodM"/>
+                <TextBox x:Name="tbTrainingPeriodY"/>
+                <TextBox x:Name="tbTrainingPeriodM"/>
             </StackPanel>
                 <Button x:Name="btSave" Content="Сохранить" Grid.Row="1" Visibility="Hidden" Click="BtSave_Click"/>
             <Button x:Name="btEdit" Content="Редактировать" Grid.Row="1" Visibility="Hidden" Click="BtEdit_Click"/>

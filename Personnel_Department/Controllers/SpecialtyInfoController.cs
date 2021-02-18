@@ -9,10 +9,13 @@ namespace Personnel_Department.Controllers
 {
     class SpecialtyInfoController
     {
-        public List<SpecialtyInformation> SpecialtyInformation { get; set; }
+        /// <summary>
+        /// Лист с SpecialtyInformation
+        /// </summary>
+        public List<SpecialtyInformation> SpecialtyInformation { get; init; }
         public SpecialtyInfoController()
         {
-            ApplicationContext applicationContext = new();
+            using ApplicationContext applicationContext = new();
             SpecialtyInformation = applicationContext.SpecialtyInformation
                 .Include(x => x.FormOfEducations).Include(x => x.Specialtys).AsNoTracking().ToList();
         }
@@ -20,7 +23,7 @@ namespace Personnel_Department.Controllers
         public static string CreateOrUpdateSpecialtyInformation(SpecialtyInformation uSpecialtyInformation)
         {
             using ApplicationContext applicationContext = new();
-            if (applicationContext.SpecialtyInformation.Contains(uSpecialtyInformation))
+            if (applicationContext.SpecialtyInformation.Contains(uSpecialtyInformation)) //TODO: Сделать проверку объектов
                 return "Такой объект уже есть";
 
             try

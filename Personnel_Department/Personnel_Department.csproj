@@ -8,11 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Forms\Icon.ico" />
     <None Remove="Image\logos.gif.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFrameworkProfiler" Version="6.0.6019" />
+    <PackageReference Include="EntityFrameworkProfiler" Version="6.0.6020" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
@@ -33,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Forms\Icon.ico" />
     <Resource Include="Image\logos.gif.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

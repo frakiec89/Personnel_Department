@@ -1,17 +1,8 @@
 ﻿using Personnel_Department.BL.ModelDataBase;
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Personnel_Department.Forms.AdditionalForms
 {
@@ -26,7 +17,7 @@ namespace Personnel_Department.Forms.AdditionalForms
         public AddSpeciallity()
         {
             InitializeComponent();
-            this.Loaded += AddSpeciallity_Loaded;
+            Loaded += AddSpeciallity_Loaded;
         }
 
         private async void AddSpeciallity_Loaded(object sender, RoutedEventArgs e)
@@ -35,7 +26,7 @@ namespace Personnel_Department.Forms.AdditionalForms
             {
                 Controllers.DiractionController controller =
                 new Controllers.DiractionController();
-                cbDir.ItemsSource = await Task.Run (()=> controller.Directions);
+                cbDir.ItemsSource = await Task.Run(() => controller.Directions);
                 grids.DataContext = _specialty;
 
             }
@@ -45,7 +36,7 @@ namespace Personnel_Department.Forms.AdditionalForms
             }
         }
 
-        private void btSave_Click(object sender, RoutedEventArgs e)
+        private void BtSave_Click(object sender, RoutedEventArgs e)
         {
             if (cbDir.SelectedIndex < 0)
             {
@@ -68,9 +59,9 @@ namespace Personnel_Department.Forms.AdditionalForms
                 return;
             }
 
-             _specialty = grids.DataContext as Specialty;
+            _specialty = grids.DataContext as Specialty;
 
-            var d = cbDir.SelectedItem as Direction;
+            Direction d = cbDir.SelectedItem as Direction;
             _specialty.DirectionId = d.DirectionId;
 
             try
@@ -78,10 +69,10 @@ namespace Personnel_Department.Forms.AdditionalForms
                 Controllers.SpecialtyController cont = new Controllers.SpecialtyController(_specialty);
                 cont.AddOrUpdate();
                 MessageForms.MessageForms.MessageBoxMessage("Объект добавлен  в БД");
-                this.DialogResult = true;
-                this.Close();
+                DialogResult = true;
+                Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageForms.MessageForms.MessageBoxMessage("Объект добавлен  в БД");
             }

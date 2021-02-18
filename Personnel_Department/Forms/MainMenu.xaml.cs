@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Personnel_Department
 {
@@ -9,18 +7,12 @@ namespace Personnel_Department
     /// </summary>
     public partial class MainMenu : Window
     {
-        public MainMenu()
-        {
-            InitializeComponent();
-        }
+        public MainMenu() => InitializeComponent();
 
         private void BtUser_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                var userWindow = new UserWindow();
-                 userWindow.Show();
-            });
+            UserWindow userWindow = new UserWindow();
+            userWindow.Show();
             Close();
         }
 
@@ -36,28 +28,28 @@ namespace Personnel_Department
 
         private void BtDeparments_Click(object sender, RoutedEventArgs e)
         {
-            var window = new Forms.DepartmentWindow();
+            Forms.DepartmentWindow window = new Forms.DepartmentWindow();
             window.Show();
             Close();
         }
 
         private void BtDeiraction_Click(object sender, RoutedEventArgs e)
         {
-            var window = new Forms.DirectionWindow();
+            Forms.DirectionWindow window = new Forms.DirectionWindow();
             window.Show();
             Close();
         }
 
         private void BtSpecialty_Click(object sender, RoutedEventArgs e)
         {
-            var window = new Forms.SpecialtyWindow();
+            Forms.SpecialtyWindow window = new Forms.SpecialtyWindow();
             window.Show();
             Close();
         }
 
         private void BtSpecialty_Click_1(object sender, RoutedEventArgs e)
         {
-            var window = new Forms.SpecialtyInfoWindow();
+            Forms.SpecialtyInfoWindow window = new Forms.SpecialtyInfoWindow();
             window.Show();
             Close();
         }

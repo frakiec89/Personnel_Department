@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Personnel_Department.BL.ModelDataBase
 {
-
     /// <summary>
     /// Срок обучения ,профиль , форма обучения
     /// </summary>
@@ -19,13 +17,18 @@ namespace Personnel_Department.BL.ModelDataBase
         /// <param name="baseEndNoBase">Тип обучения(Базовый или углубленный)</param>
         /// <param name="trainingPeriod">Период обучения</param>
         /// <param name="formOfEducationId"></param>
-        public SpecialtyInformation(int? specialtyId, string nameProfile,string baseEndNoBase,
+        public SpecialtyInformation(int? specialtyId, string nameProfile, string baseEndNoBase,
             int? formOfEducationId, DateTime trainingPeriod)
         {
-            if(specialtyId is null)
+            if (specialtyId is null)
+            {
                 throw new ArgumentNullException("Не выбрана специальность");
-            if(formOfEducationId is null)
+            }
+
+            if (formOfEducationId is null)
+            {
                 throw new ArgumentNullException("Не форма обучения");
+            }
 
             SpecialtyId = specialtyId.Value;
             NameProfile = nameProfile ?? throw new ArgumentNullException("Введите имя");
@@ -33,7 +36,6 @@ namespace Personnel_Department.BL.ModelDataBase
             TrainingPeriod = trainingPeriod;
             FormOfEducationId = formOfEducationId.Value;
         }
-
         /// <summary>
         /// С не готовой датой
         /// </summary>
@@ -44,48 +46,41 @@ namespace Personnel_Department.BL.ModelDataBase
         /// <param name="year">Год строкой</param>
         /// <param name="month">Месяц строкой</param>
         public SpecialtyInformation(int specialtyId, string nameProfile, string baseEndNoBase, int formOfEducationId,
-            string year, string month):this(specialtyId, nameProfile, baseEndNoBase, formOfEducationId,new DateTime())
+            string year, string month) : this(specialtyId, nameProfile, baseEndNoBase, formOfEducationId, new DateTime())
         {
             TrainingPeriod = GetDate(year, month);
         }
-
         private static DateTime GetDate(string year, string month)
         {
-            if (Int32.TryParse(year, out int result) && Int32.TryParse(month, out int result2))
+            if (int.TryParse(year, out int result) && int.TryParse(month, out int result2))
+            {
                 return new DateTime(year: result, month: result2, day: 1);
+            }
             else
+            {
                 throw new ArgumentException("Дата введена не верно");
+            }
         }
 
-       public int  SpecialtyinformationId { get; set; }
-
-       public int SpecialtyId { get; set; }
-       public  virtual Specialty Specialtys { get; set; }
-
-       /// <summary>
+        public int SpecialtyinformationId { get; set; }
+        public int SpecialtyId { get; set; }
+        public virtual Specialty Specialtys { get; set; }
+        /// <summary>
         /// Наличие профиля  - например  у гр  ИС-18-02 - профиль - администратор  БД 
         /// </summary>
-       public string NameProfile { get; set; }
-
+        public string NameProfile { get; set; }
         /// <summary>
         /// углубленно - не углубленно
         /// </summary>
         public string BaseEndNoBase { get; set; }
-
-
         /// <summary>
-        /// срок  обучения , например  4 года 10 месяцев
+        /// Срок  обучения , например  4 года 10 месяцев
         /// </summary>
-        public  System.DateTime TrainingPeriod {
-            get;
-            set; }
-
+        public System.DateTime TrainingPeriod { get; set; }
         [NotMapped]
-       public virtual string GetTrainingPeriod { get => TrainingPeriod.Year.ToString()+" г."+ ' ' + TrainingPeriod.Month.ToString()+" м. "; }
-       
-       public  int   FormOfEducationId { get; set; }
-       public FormOfEducation FormOfEducations { get; set; }
-
+        public virtual string GetTrainingPeriod { get => TrainingPeriod.Year.ToString() + " г." + ' ' + TrainingPeriod.Month.ToString() + " м. "; }
+        public int FormOfEducationId { get; set; }
+        public FormOfEducation FormOfEducations { get; set; }
         /// <summary>
         /// Если  да  то  не  показывать 
         /// </summary>

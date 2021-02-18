@@ -1,18 +1,6 @@
 ﻿using Personnel_Department.Controllers;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Personnel_Department.Forms
 {
@@ -21,23 +9,13 @@ namespace Personnel_Department.Forms
     /// </summary>
     public partial class SpecialtyWindow : Window
     {
-        public SpecialtyWindow()
+        public SpecialtyWindow() => InitializeComponent();
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) => lbMain.ItemsSource = new SpecialtyController().Specialties;
+
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
-         
-
-
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            LbMain.ItemsSource = new SpecialtyController().Specialties;
-           
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new MainMenu();
+            MainMenu window = new MainMenu();
             window.Show();
             Close();
         }
@@ -47,12 +25,12 @@ namespace Personnel_Department.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void CreateSpecialty_Click(object sender, RoutedEventArgs e)
         {
             Forms.AdditionalForms.AddSpeciallity add = new AdditionalForms.AddSpeciallity();
             if (add.ShowDialog() == true)
             {
-                //todo обновить  контент 
+                //ToDo обновить  контент 
             }
         }
     }

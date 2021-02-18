@@ -1,19 +1,12 @@
-﻿using System.Collections.Generic;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
     /// <summary>
-    /// направления // например  гуманитарное   и  тд
+    /// направления, например  гуманитарное   и  тд
     /// </summary>
     public class Direction
     {
-
         public int DirectionId { get; set; }
-        public string Name { get;  set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
+        public string Name { get; set; }
+        public override string ToString() => Name;
     }
 }

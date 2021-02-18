@@ -1,17 +1,7 @@
 ﻿using Personnel_Department.BL.ModelDataBase;
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Personnel_Department.Forms.AdditionalForms
 {
@@ -20,17 +10,14 @@ namespace Personnel_Department.Forms.AdditionalForms
     /// </summary>
     public partial class AddDirectionWindow : Window
     {
-        public AddDirectionWindow()
-        {
-            InitializeComponent();
-        }
+        public AddDirectionWindow() => InitializeComponent();
 
         /// <summary>
         /// Сохраняем  направление  в  бд
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected virtual void btSave_Click(object sender, RoutedEventArgs e)
+        protected virtual void BtSave_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -38,7 +25,7 @@ namespace Personnel_Department.Forms.AdditionalForms
                 controller.AddDiraction();
                 MessageBox.Show("Объект сохранен в БД");
                 DialogResult = true;
-                this.Close();
+                Close();
             }
             catch (Exception ex)
             {
@@ -47,36 +34,33 @@ namespace Personnel_Department.Forms.AdditionalForms
         }
     }
 
-
-    public class CangeDirectionWindow : AddDirectionWindow
+    public class EditDirectionWindow : AddDirectionWindow
     {
-        private Direction DirectionCange;
+        private Direction DirectionEdit;
 
-       public CangeDirectionWindow (Direction direction): base ()
-       {
+        public EditDirectionWindow(Direction direction) : base()
+        {
             base.Title = "Редактирование";
             btSave.Content = "Изменить";
-            DirectionCange = direction;
-            grids.DataContext = DirectionCange;
-       }
+            DirectionEdit = direction;
+            grids.DataContext = DirectionEdit;
+        }
 
-        protected override void btSave_Click(object sender, RoutedEventArgs e)
+        protected override void BtSave_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                DirectionCange = grids.DataContext as Direction;
-                Controllers.DiractionController controller = new Controllers.DiractionController(DirectionCange);
+                DirectionEdit = grids.DataContext as Direction;
+                Controllers.DiractionController controller = new Controllers.DiractionController(DirectionEdit);
                 controller.UpdateDiraction();
                 MessageForms.MessageForms.MessageBoxMessage("Объект изменен в БД");
                 DialogResult = true;
-                this.Close();
+                Close();
             }
             catch (Exception ex)
             {
                 MessageForms.MessageForms.MessageBoxMessage(ex.Message);
             }
         }
-
-
     }
 }

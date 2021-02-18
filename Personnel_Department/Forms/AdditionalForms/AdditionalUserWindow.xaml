@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personnel_Department.Forms"
         mc:Ignorable="d"
-        Title="AdditionalUserWindow" Height="450" Width="396">
+        Height="450" Width="396" Loaded="Window_Loaded" Icon="/Forms/Icon.ico">
     <Grid x:Name="grids">
         <Grid.RowDefinitions>
             <RowDefinition Height="80*"/>
@@ -17,24 +17,24 @@
         
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbSurname" Content="Фамилия"/>
-                <TextBox x:Name="TbSurname" Text="{Binding Surname}"/>
+                <Label x:Name="lbSurname" Content="Фамилия"/>
+                <TextBox x:Name="tbSurname" Text="{Binding Surname}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-            <Label x:Name="LbName" Content="Имя"/>
-                <TextBox x:Name="TbName" Text="{Binding Name}"  />
+            <Label x:Name="lbName" Content="Имя"/>
+                <TextBox x:Name="tbName" Text="{Binding Name}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbPatronumic" Content="Отчество"/>
-                <TextBox x:Name ="TbPatronumic"  Text="{Binding Patronumic}" />
+                <Label x:Name="lbPatronumic" Content="Отчество"/>
+                <TextBox x:Name ="tbPatronumic"  Text="{Binding Patronumic}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbDateRegistrations"  Content="Дата принятия на работу"/>
-                <DatePicker x:Name="DpDateRegistrations" SelectedDate="{Binding DateRegistrations}"  IsDropDownOpen="False" SelectedDateFormat ="Short" />
+                <Label x:Name="lbDateRegistrations"  Content="Дата принятия на работу"/>
+                <DatePicker x:Name="dpDateRegistrations" SelectedDate="{Binding DateRegistrations}"  IsDropDownOpen="False" SelectedDateFormat ="Short" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="LbDateOfDismissal"   Content="Дата увольнения"/>
-                <DatePicker x:Name="DpDateOfDismissal" SelectedDate="{Binding DateOfDismissal}"  IsDropDownOpen="False" SelectedDateFormat ="Short"/>
+                <Label x:Name="lbDateOfDismissal" Content="Дата увольнения"/>
+                <DatePicker x:Name="dpDateOfDismissal" SelectedDate="{Binding DateOfDismissal}"  IsDropDownOpen="False" SelectedDateFormat ="Short"/>
             </StackPanel>
             <Button x:Name="btSave" Content="Сохранить" Grid.Row="1" Visibility="Hidden" Click="BtSave_Click"/>
         </StackPanel>

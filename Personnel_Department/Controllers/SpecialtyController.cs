@@ -9,8 +9,8 @@ namespace Personnel_Department.Controllers
 {
     public class SpecialtyController
     {
-        public List<Specialty> Specialties { get; set; }
-        public Specialty newSpecialty { get; }
+        public List<Specialty> Specialties { get; init; }
+        public Specialty NewSpecialty { get; }
 
         public SpecialtyController()
         {
@@ -21,7 +21,7 @@ namespace Personnel_Department.Controllers
 
         public SpecialtyController(Specialty specialty)
         {
-            newSpecialty = specialty;
+            NewSpecialty = specialty;
         }
 
         public static List<string> GetNameSpecialty()
@@ -43,15 +43,15 @@ namespace Personnel_Department.Controllers
 
         public void AddOrUpdate ()
         {
-            if (newSpecialty==null)
+            if (NewSpecialty==null)
             {
                 throw new Exception("Пустой объект");
             }
-            if (string.IsNullOrWhiteSpace( newSpecialty.Name))
+            if (string.IsNullOrWhiteSpace( NewSpecialty.Name))
             {
                 throw new ArgumentNullException("Название не может быть пустым");
             }
-            if (string.IsNullOrWhiteSpace(newSpecialty.CodeSpecialty))
+            if (string.IsNullOrWhiteSpace(NewSpecialty.CodeSpecialty))
             {
                 throw new ArgumentNullException("Код специальности не может быть пустым");
             }
@@ -61,7 +61,7 @@ namespace Personnel_Department.Controllers
                 using ApplicationContext applicationContext = new();
 
                 // todo добавить  проверку  на  повторение 
-                applicationContext.Specialties.Update(newSpecialty);
+                applicationContext.Specialties.Update(NewSpecialty);
                 applicationContext.SaveChanges();
 
             }

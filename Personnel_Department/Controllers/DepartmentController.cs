@@ -11,8 +11,8 @@ namespace Personnel_Department.Controllers
         public List<DepartmentInfo> Departments = new List<DepartmentInfo>();
 
         public string ComentName { get; init; }
-        public DateTime DataName { get; private set; }
-        public string ComentUser { get; private set; }
+        public DateTime DataName { get; init; }
+        public string ComentUser { get; init; }
 
         /// <summary>
         /// показывать  удаленных / да нет 
@@ -28,7 +28,7 @@ namespace Personnel_Department.Controllers
         /// Получает  список  последних изменений  имени отделения
         /// </summary>
         /// <returns></returns>
-        private List<DepartmentInformationName> GetLastName()
+        private static List<DepartmentInformationName> GetLastName()
         {
             using ApplicationContext dbConnect = new ApplicationContext();
             var lastDepartmentName = from dep in dbConnect.Departments
@@ -59,7 +59,7 @@ namespace Personnel_Department.Controllers
         /// получат список  последний зав отделений
         /// </summary>
         /// <returns></returns>
-        private List<DepartmentInformationUsers> GetLastUser()
+        private static List<DepartmentInformationUsers> GetLastUser()
         {
             using ApplicationContext dbConnect = new ApplicationContext();
             try
@@ -92,7 +92,7 @@ namespace Personnel_Department.Controllers
                 throw ex.InnerException;
             }
         }
-        private List<DepartmentInfo> GetDepartment()
+        private static List<DepartmentInfo> GetDepartment()
         {
             var deparmentInfo = from tableU in GetLastUser()
                                 join d in GetLastName()

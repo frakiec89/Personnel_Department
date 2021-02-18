@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace Personnel_Department.BL.ModelDataBase
+﻿namespace Personnel_Department.BL.ModelDataBase
 {
     /// <summary>
     /// Отделения  колледжа - как  правило   распределяется по  корпусам -
@@ -10,9 +6,7 @@ namespace Personnel_Department.BL.ModelDataBase
     /// </summary>
     public class Department
     {
-      public  int  DepartmentId { get; set; }
-      public string Address { get; set; }
-
-      
+        public int DepartmentId { get; set; }
+        public string Address { get; set; }
     }
 }

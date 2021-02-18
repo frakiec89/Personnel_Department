@@ -12,14 +12,7 @@ namespace Personnel_Department.Controllers
         /// <summary>
         /// Список пользователь 
         /// </summary>
-        public List<User> Users { get; set; }
-
-        public List<User> Refresh()
-        {
-            using ApplicationContext dbConnect = new ApplicationContext();
-            return Users = dbConnect.Users.AsNoTracking().ToList();
-        }
-
+        public List<User> Users { get; init; }
 
         /// <summary>
         /// показывать  удаленных / да нет 
@@ -54,38 +47,21 @@ namespace Personnel_Department.Controllers
             }
         }
 
-        public static string CreateUser(User newUser)
+        public static string CreateOrEditUser(User uUser)
         {
             try
             {
                 using (ApplicationContext dbConnect = new ApplicationContext())
                 {
-                    dbConnect.Users.Add(newUser);
+                    dbConnect.Users.Update(uUser);
                     dbConnect.SaveChanges();
                 }
-                return "Сохранение прошло успешно";
+                return "Операция прошла успешно";
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
         }
-        //public static string EditUser(User newUser)
-        //{
-        //    try
-        //    {
-        //        using (ApplicationContext dbConnect = new ApplicationContext())
-        //        {
-        //            dbConnect.Users.Update(newUser);
-        //            dbConnect.SaveChanges();
-        //        }
-        //        return "Сохранение прошло успешно";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return ex.Message;
-        //    }
-        //}
-
     }
 }

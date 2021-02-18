@@ -5,21 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personnel_Department"
         mc:Ignorable="d"
-        Title="UserWindow" Height="450" Width="800" Loaded="UserWindow_Loaded">
+        Title="Список пользователей" Height="450" Width="800" Loaded="UserWindow_Loaded" Icon="/Forms/Icon.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
             <RowDefinition Height="397*"/>
         </Grid.RowDefinitions>
-       
-        <Button Content="Добавить пользователя" Click="Button_Click_1" Height="37" Width="257"/>
-
         <StackPanel   Grid.Row="1">
-
             <Label Name="lbTimeRun" Grid.Row="1" Content="Подождите" Padding="10" 
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-            <ListBox x:Name="LbMain">
+            <ListBox x:Name="lbMain">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -36,7 +32,7 @@
                             <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
                                 <Image Source="{Binding ImagePath}"/>
                             </Border>
-                            <Label Content="{Binding FullName}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Label_MouseDoubleClick">
+                            <Label Content="{Binding FullName}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="OpenAdditionalWindow_MouseDoubleClick">
                                 <Label.ToolTip>
                                     <StackPanel Orientation="Vertical">
                                         <TextBlock Text="{Binding FullName}"/>
@@ -51,7 +47,11 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
-
-        <Button Content="Назад" HorizontalAlignment="Left" Width="51" Click="Button_Click"/>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button Content="Назад" Click="Back_Click"/>
+            <Button Content="Добавить пользователя" Click="CreateUser_Click"/>
+        </StackPanel>
+        
     </Grid>
 </Window>

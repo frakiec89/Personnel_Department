@@ -1,5 +1,5 @@
 ﻿namespace Personnel_Department.BL.ModelDataBase
-{ 
+{
     /// <summary>
     /// класс для переназначения  зав Отделением 
     /// </summary>
@@ -15,10 +15,9 @@
         /// Зав отделением 
         /// </summary>
         public virtual User Users { get; set; }
-
-        // комментарии  по  поводу назначения
+        /// <summary>
+        ///Комментарии  по  поводу назначения
+        /// </summary>
         public string Coment { get; set; }
     }
-
-    
 }

@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using Personnel_Department.BL.ModelDataBase;
+using Personnel_Department.Forms.AdditionalForms;
+
+using System.Windows;
 using System.Windows.Input;
 
 namespace Personnel_Department.Forms
@@ -10,29 +13,29 @@ namespace Personnel_Department.Forms
     {
         public SpecialtyInfoWindow() => InitializeComponent();
 
-        void UpdateDb() => LbMain.ItemsSource = new Controllers.SpecialtyInfoController().SpecialtyInformation;
+        private void UpdateDb() => lbMain.ItemsSource = new Controllers.SpecialtyInfoController().SpecialtyInformation;
         private void Window_Loaded(object sender, RoutedEventArgs e) => UpdateDb();
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            var window = new MainMenu();
+            MainMenu window = new MainMenu();
             window.Show();
             Close();
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            var window = new AdditionalForms.AdditionalSpecialtyInfoCreateWindow();
+            AdditionalSpecialtyInfoCreateWindow window = new AdditionalForms.AdditionalSpecialtyInfoCreateWindow();
             window.ShowDialog();
             UpdateDb();
         }
 
         private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var window = new AdditionalForms.AdditionalSpecialtyInfoWindow(LbMain.SelectedItem);
+            AdditionalSpecialtyInfoWindow window = new AdditionalForms.AdditionalSpecialtyInfoWindow((SpecialtyInformation)lbMain.SelectedItem);
             window.ShowDialog();
             UpdateDb();
         }
     }
-    
+
 }

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personnel_Department"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Авторизация" Height="450" Width="800" Icon="/Forms/Icon.ico">
     <Grid>
-        <Button x:Name="BtLogin" Content="Авторизация" HorizontalAlignment="Left" Margin="325,157,0,0" VerticalAlignment="Top" Click="BtLogin_Click" Height="130" Width="176"/>
+        <Button x:Name="btLogin" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center"  Click="BtLogin_Click" Height="130" Width="176"/>
 
     </Grid>
 </Window>
