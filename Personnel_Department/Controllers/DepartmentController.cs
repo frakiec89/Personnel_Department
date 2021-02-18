@@ -92,7 +92,6 @@ namespace Personnel_Department.Controllers
                 throw ex.InnerException;
             }
         }
-
         private List<DepartmentInfo> GetDepartment()
         {
             var deparmentInfo = from tableU in GetLastUser()
