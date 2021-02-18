@@ -15,9 +15,13 @@ namespace Personnel_Department.Controllers
         public SpecialtyInfoController()
         {
             ApplicationContext applicationContext = new();
-            SpecialtyInformation = applicationContext.SpecialtyInformation.AsNoTracking().ToList();
+            SpecialtyInformation = applicationContext.SpecialtyInformation
+                .Include(x => x.FormOfEducations).
+                 Include(x => x.Specialtys).AsNoTracking().
+                ToList();
+
         }
-        public static string EditOrCreateUser(SpecialtyInformation newSpecialtyInformation)
+        public static string CreateSpecialtyInfo(SpecialtyInformation newSpecialtyInformation)
         {
             //if(newSpecialtyInformation is null)
             //    throw new ArgumentException("Пустой");
@@ -35,7 +39,20 @@ namespace Personnel_Department.Controllers
             {
                 return ex.Message;
             }
-
+        }
+        public static string UpdateSpecialtyInfo(SpecialtyInformation uSpecialtyInformation)
+        {
+            try
+            {
+                using ApplicationContext applicationContext = new();
+                applicationContext.SpecialtyInformation.Update(uSpecialtyInformation);
+                applicationContext.SaveChanges();
+                return "Редактирование прошло успешно";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
     }
 }
