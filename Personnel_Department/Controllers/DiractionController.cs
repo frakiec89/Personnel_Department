@@ -64,9 +64,8 @@ namespace Personnel_Department.Controllers
             if (NewDirection!=null )
             {
               using ApplicationContext dbConnect = new ApplicationContext();
-                  if (  dbConnect.Directions.
-                        Where(x=>x.Name.ToUpper() == NewDirection.Name.ToUpper().TrimStart().TrimStart()).
-                        Count()>0)
+                  if (dbConnect.Directions.
+                        Where(x => x.Name.ToUpper() == NewDirection.Name.ToUpper().TrimStart().TrimEnd()).Any())
                   {
                         throw new ArgumentException("Такой объект уже есть");
                   }

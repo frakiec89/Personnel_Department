@@ -3,16 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Personnel_Department.Forms.AdditionalForms
 {
@@ -21,7 +12,7 @@ namespace Personnel_Department.Forms.AdditionalForms
     /// </summary>
     public partial class AdditionalSpecialtyInfoWindow : Window
     {
-        private SpecialtyInformation Specialyty { get; init; }
+        SpecialtyInformation SelectedSpecialty { get; set; }
         public AdditionalSpecialtyInfoWindow() => InitializeComponent();
         public AdditionalSpecialtyInfoWindow(object SelectedSpecialtyObj): this()
         {
@@ -37,27 +28,30 @@ namespace Personnel_Department.Forms.AdditionalForms
             rbBase.Visibility = Visibility.Collapsed;
             rbNoBase.Visibility = Visibility.Collapsed;
             Controllers.SpecialtyInfoController specialtyInfoController = new();
-            Specialyty = (SpecialtyInformation)SelectedSpecialtyObj;
-            grids.DataContext = Specialyty;
-            lbSpecialtyC.Content = new Controllers.SpecialtyController().Specialties.Find(x => x.SpecialtyId == Specialyty.SpecialtyId);}
+            SelectedSpecialty = (SpecialtyInformation)SelectedSpecialtyObj;
+            grids.DataContext = SelectedSpecialty;
+            lbSpecialtyC.Content = new Controllers.SpecialtyController().Specialties.Find(x => x.SpecialtyId == SelectedSpecialty.SpecialtyId);
+        }
 
         protected virtual void BtSave_Click(object sender, RoutedEventArgs e) { }
 
         private void BtEdit_Click(object sender, RoutedEventArgs e)
         {
-            var window = new AdditionalSpecialtyInfoEditWindow(Specialyty);
+            var window = new AdditionalSpecialtyInfoEditWindow(SelectedSpecialty);
             window.Show();
+            Close();
         }
     }
 
     /// <summary>
     /// Редактирование
     /// </summary>
-    public class AdditionalSpecialtyInfoEditWindow: AdditionalSpecialtyInfoWindow
+    public sealed class AdditionalSpecialtyInfoEditWindow: AdditionalSpecialtyInfoWindow
     {
-        SpecialtyInformation specialyty;
-        public AdditionalSpecialtyInfoEditWindow(object selectedSpecialtyObj) :base()
+        SpecialtyInformation SelectedSpecialty { get; set; }
+        public AdditionalSpecialtyInfoEditWindow(SpecialtyInformation SelectedSpecialty) :base()
         {
+            this.SelectedSpecialty = SelectedSpecialty;
             btSave.Visibility = Visibility.Visible;
             Controllers.SpecialtyInfoController specialtyInfoController = new();
             TbTrainingPeriodM.Visibility = Visibility.Collapsed;
@@ -67,19 +61,15 @@ namespace Personnel_Department.Forms.AdditionalForms
             TbTrainingPeriodM.Visibility = Visibility.Visible;
             TbTrainingPeriodY.Visibility = Visibility.Visible;
             lbTrainingPeriodC.Visibility = Visibility.Collapsed;
-            
-            specialyty = (SpecialtyInformation)selectedSpecialtyObj;
-            var selectedSpecialyty = specialtyInfoController.SpecialtyInformation.Find(x => x.SpecialtyinformationId == specialyty.SpecialtyinformationId);
-            TbTrainingPeriodY.Text = specialyty.TrainingPeriod.Year.ToString();
-            TbTrainingPeriodM.Text = specialyty.TrainingPeriod.Month.ToString();
-
-            grids.DataContext = selectedSpecialyty;
+            TbTrainingPeriodY.Text = SelectedSpecialty.TrainingPeriod.Year.ToString();
+            TbTrainingPeriodM.Text = SelectedSpecialty.TrainingPeriod.Month.ToString();
+            grids.DataContext = SelectedSpecialty;
             cbFormOfEducation.ItemsSource = new Controllers.FormOfEducationController().FormOfEducations.ToList();
-            cbFormOfEducation.SelectedItem = ((List<FormOfEducation>)cbFormOfEducation.ItemsSource).Find(x => x.FormOfEducationId == specialyty.FormOfEducationId);
+            cbFormOfEducation.SelectedItem = ((List<FormOfEducation>)cbFormOfEducation.ItemsSource).Find(x => x.FormOfEducationId == SelectedSpecialty.FormOfEducationId);
             cbSpecialty.ItemsSource = new Controllers.SpecialtyController().Specialties.ToList();
-            cbSpecialty.SelectedItem = ((List<Specialty>)cbSpecialty.ItemsSource).Find(x => x.SpecialtyId == specialyty.SpecialtyId);
+            cbSpecialty.SelectedItem = ((List<Specialty>)cbSpecialty.ItemsSource).Find(x => x.SpecialtyId == SelectedSpecialty.SpecialtyId);
            
-            if (selectedSpecialyty.BaseEndNoBase == rbNoBase.Content.ToString())
+            if (SelectedSpecialty.BaseEndNoBase == rbNoBase.Content.ToString())
                 rbNoBase.IsChecked = true;
             else
                 rbBase.IsChecked = true;
@@ -96,15 +86,17 @@ namespace Personnel_Department.Forms.AdditionalForms
 
             try
             {
-                specialyty = (SpecialtyInformation)grids.DataContext;
-                specialyty.BaseEndNoBase = baseEndNoBase;
+                SelectedSpecialty = (SpecialtyInformation)grids.DataContext;
+                SelectedSpecialty.BaseEndNoBase = baseEndNoBase;
+                SelectedSpecialty.FormOfEducationId =((FormOfEducation)cbFormOfEducation.SelectedItem).FormOfEducationId;
+                SelectedSpecialty.SpecialtyId = ((Specialty)cbSpecialty.SelectedItem).SpecialtyId;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return;
             }
-            MessageBox.Show(Controllers.SpecialtyInfoController.UpdateSpecialtyInfo(specialyty));
+                MessageBox.Show(Controllers.SpecialtyInfoController.CreateOrUpdateSpecialtyInformation(SelectedSpecialty));
             Close();
         }
     }
@@ -112,7 +104,7 @@ namespace Personnel_Department.Forms.AdditionalForms
     /// <summary>
     /// Создание
     /// </summary>
-    public class AdditionalSpecialtyInfoCreateWindow : AdditionalSpecialtyInfoWindow
+    public sealed class AdditionalSpecialtyInfoCreateWindow : AdditionalSpecialtyInfoWindow
     {
         public AdditionalSpecialtyInfoCreateWindow():base()
         {
@@ -147,7 +139,7 @@ namespace Personnel_Department.Forms.AdditionalForms
                 MessageBox.Show(ex.Message);
                 return;
             }
-            MessageBox.Show(Controllers.SpecialtyInfoController.CreateSpecialtyInfo(newSpecInfo));
+            MessageBox.Show(Controllers.SpecialtyInfoController.CreateOrUpdateSpecialtyInformation(newSpecInfo));
             Close();
         }
     }
