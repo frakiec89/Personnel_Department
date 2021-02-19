@@ -1,5 +1,9 @@
-﻿using Personnel_Department.Controllers;
-
+﻿using Personnel_Department.BL.ModelDataBase;
+using Personnel_Department.Controllers;
+using Personnel_Department.Forms.AdditionalForms;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Personnel_Department.Forms
@@ -25,13 +29,29 @@ namespace Personnel_Department.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CreateSpecialty_Click(object sender, RoutedEventArgs e)
+        private async void CreateSpecialty_Click(object sender, RoutedEventArgs e)
         {
-            Forms.AdditionalForms.AddSpeciallity add = new AdditionalForms.AddSpeciallity();
+            Forms.AdditionalForms.AddSpeciallity add = new AddSpeciallity();
             if (add.ShowDialog() == true)
             {
-                //ToDo обновить  контент 
+                try { lbMain.ItemsSource = await Task.Run(() => new SpecialtyController().Specialties); }
+                catch (Exception ex) { MessageForms.MessageForms.MessageBoxMessage(ex.Message); }
             }
+        }
+
+        private async void lbMain_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            try
+            {
+                var s = sender as System.Windows.Controls.ListBox;
+                Forms.AdditionalForms.CangeSpeciallty speciallity = new CangeSpeciallty(s.SelectedItem as Specialty);
+                if ( speciallity.ShowDialog() == true)
+                {
+                    lbMain.ItemsSource = await Task.Run(() => new SpecialtyController().Specialties); 
+                }
+            }
+            catch (Exception ex) { MessageForms.MessageForms.MessageBoxMessage(ex.Message); }
+          
         }
     }
 }

@@ -15,24 +15,26 @@
             <Border Grid.Row="0" Background="Aqua" BorderBrush="Black" BorderThickness="3">
             </Border>
             <StackPanel Orientation="Vertical" Grid.Row="1">
-                
                 <StackPanel  Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-                    <Label  Margin="10,1,1,1">Укажите Код (</Label>
-                    <TextBox x:Name="tbCode" Text="{Binding CodeSpecialty}" Margin="1,1,1,1" VerticalAlignment="Center"/>
-                    <Label  Margin="1,1,1,1">) (например 09.02.01)</Label>
+                    <Label Name="lbcode"  Margin="10,1,1,1">Укажите Код (</Label>
+                    <TextBox MinWidth="50" x:Name="tbCode" Text="{Binding CodeSpecialty}"
+                             Margin="1,1,1,1" VerticalAlignment="Center"/>
+                    <Label  Name="lbprim" Margin="1,1,1,1">) (например 09.02.01)</Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Margin="10,1,1,1" Content="Укажите Название"/>
-                    <TextBox x:Name="TbName" Text="{Binding Name}" Width="241"/>
+                    <Label Name="lbname" Margin="10,1,1,1" Content="Укажите Название"/>
+                    <TextBox BorderBrush="Black" MinWidth="50" x:Name="TbName" Text="{Binding Name}" Width="241"/>
                 </StackPanel>
                 
                 <StackPanel  Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
                     <Label  Margin="10,1,1,1">Выберите направление:</Label>
-                    <ComboBox Margin="10,1,1,1" Name="cbDir"></ComboBox>
+                    <ComboBox MinWidth="50" Margin="10,1,1,1" Name="cbDir"></ComboBox>
                 </StackPanel>
 
                 <Button Padding="5" HorizontalAlignment="Center"  x:Name="btSave" Content="Добавить"
                            Click="BtSave_Click"  />
+                <Button Margin="10,10,10,10" Padding="5" HorizontalAlignment="Center"  x:Name="btDell" Content="Удалить"
+                           Click="btDell_Click"  />
             </StackPanel>
         </Grid>
     </Grid>

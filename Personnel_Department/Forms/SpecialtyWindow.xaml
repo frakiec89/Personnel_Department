@@ -11,10 +11,10 @@
             <RowDefinition Height="13*"/>
             <RowDefinition Height="204*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="lbMain" Grid.Row="1" >
+        <ListBox x:Name="lbMain" Grid.Row="1" MouseDoubleClick="lbMain_MouseDoubleClick" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid  >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition/>

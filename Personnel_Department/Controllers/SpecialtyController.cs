@@ -41,7 +41,7 @@ namespace Personnel_Department.Controllers
         }
 
 
-        public void AddOrUpdate ()
+        public void Add ()
         {
             if (NewSpecialty==null)
             {
@@ -60,8 +60,11 @@ namespace Personnel_Department.Controllers
             {
                 using ApplicationContext applicationContext = new();
 
-                // todo добавить  проверку  на  повторение 
-                applicationContext.Specialties.Update(NewSpecialty);
+                if(applicationContext.Specialties.Any(x=>x.Name==NewSpecialty.Name && x.CodeSpecialty==NewSpecialty.CodeSpecialty))
+                {
+                    throw new Exception("Такая специальность уже есть");
+                }
+                applicationContext.Specialties.Add(NewSpecialty);
                 applicationContext.SaveChanges();
 
             }
@@ -69,7 +72,47 @@ namespace Personnel_Department.Controllers
             {
                 throw new Exception("ошибка БД " + ex.Message);
             }
+        }
 
+        public void Update()
+        {
+            if (NewSpecialty == null)
+            {
+                throw new Exception("Пустой объект");
+            }
+            if (string.IsNullOrWhiteSpace(NewSpecialty.Name))
+            {
+                throw new ArgumentNullException("Название не может быть пустым");
+            }
+            if (string.IsNullOrWhiteSpace(NewSpecialty.CodeSpecialty))
+            {
+                throw new ArgumentNullException("Код специальности не может быть пустым");
+            }
+
+            try
+            {
+                using ApplicationContext applicationContext = new();
+                applicationContext.Specialties.Update(NewSpecialty);
+                applicationContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ошибка БД " + ex.Message);
+            }
+        }
+
+        public void Dell()
+        {
+            try
+            {
+                using ApplicationContext applicationContext = new();
+                applicationContext.Specialties.Remove(NewSpecialty);
+                applicationContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ошибка БД " + ex.Message);
+            }
         }
     }
 }
