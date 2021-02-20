@@ -11,10 +11,10 @@
             <RowDefinition Height="37*"/>
             <RowDefinition Height="397*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="lbMain" Grid.Row="1">
-            <ListBox.ItemTemplate>
+        <ListBox x:Name="lbMain" Grid.Row="1" MouseDoubleClick="lbMain_MouseDoubleClick">
+            <ListBox.ItemTemplate >
                 <DataTemplate>
-                    <Grid>
+                    <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition/>
@@ -26,25 +26,35 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
-                            <Image Source="{Binding ImagePath}"/>
+                            <Image Source="\Image\Im1.jpg">
+                                <Image.ToolTip>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding NameProfile}"/>
+                                        <TextBlock Text="{Binding GetTrainingPeriod }"/>
+                                        <TextBlock Text="{Binding BaseEndNoBase}"/>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                         </Border>
-                        <Label Content="{Binding NameProfile}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Label_MouseDoubleClick">
-                            <Label.ToolTip>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding NameProfile}"/>
-                                    <TextBlock Text="{Binding TrainingPeriod}"/>
-                                    <TextBlock Text="{Binding BaseEndNoBase}"/>
-                                </StackPanel>
-                            </Label.ToolTip>
-                        </Label>
-                        <Label Content="{Binding GetTrainingPeriod}" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock  Grid.Row="0" 
+                               Grid.Column="1" Margin="10,1,1,1">
+                            <Label>Специальность </Label>
+                            <Label Content="{Binding Specialtys}" />
+                        </TextBlock>
+
+                        <TextBlock  Grid.Row="1" Grid.Column="1" Margin="10,1,1,1">
+                           <Label>Срок обучения</Label>
+                           <Label Content="{Binding GetTrainingPeriod}" />
+                             <Label>форма обучения</Label>
+                           <Label Content="{Binding FormOfEducations.Name}" Background="Aqua"  />
+                        </TextBlock>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Orientation="Horizontal" Grid.Row ="0">
-            <Button Content="Назад" Click="Back_Click"/>
-            <Button Content="Добавить" Click="Create_Click"/>
+            <Button Margin="4" Padding="4" Content="Назад" Click="Back_Click"/>
+            <Button Margin="4" Padding="2" Content="Добавить" Click="Create_Click"/>
         </StackPanel>
     </Grid>
 </Window>

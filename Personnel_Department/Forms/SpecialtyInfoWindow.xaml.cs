@@ -1,6 +1,6 @@
 ﻿using Personnel_Department.BL.ModelDataBase;
 using Personnel_Department.Forms.AdditionalForms;
-
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -30,12 +30,21 @@ namespace Personnel_Department.Forms
             UpdateDb();
         }
 
-        private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+       
+
+        private void lbMain_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            AdditionalSpecialtyInfoWindow window = new AdditionalForms.AdditionalSpecialtyInfoWindow((SpecialtyInformation)lbMain.SelectedItem);
-            window.ShowDialog();
-            UpdateDb();
+            try
+            {
+                if (lbMain.SelectedIndex >= 0 )
+                {
+                    AdditionalSpecialtyInfoWindow window =
+                    new AdditionalForms.AdditionalSpecialtyInfoWindow((SpecialtyInformation)lbMain.SelectedItem);
+                    window.ShowDialog();
+                    UpdateDb();
+                }
+            }
+            catch(Exception ex)       { MessageForms.MessageForms.MessageBoxMessage(ex.Message); }
         }
     }
-
 }

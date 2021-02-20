@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Forms\Icon.ico" />
+    <None Remove="Image\Im1.jpg" />
     <None Remove="Image\logos.gif.png" />
   </ItemGroup>
 
@@ -36,6 +37,9 @@
 
   <ItemGroup>
     <Resource Include="Forms\Icon.ico" />
+    <Resource Include="Image\Im1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Image\logos.gif.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

@@ -1,6 +1,5 @@
 ﻿using Personnel_Department.BL.ModelDataBase;
 using Personnel_Department.Controllers;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,7 +83,6 @@ namespace Personnel_Department.Forms.AdditionalForms
             tbTrainingPeriodY.Text = selectedSpecialty.TrainingPeriod.Year.ToString();
             tbTrainingPeriodM.Text = selectedSpecialty.TrainingPeriod.Month.ToString();
             lbM.Visibility = Visibility.Visible; lbY.Visibility = Visibility.Visible;
-
             #endregion
         }
 
@@ -145,13 +143,11 @@ namespace Personnel_Department.Forms.AdditionalForms
         protected override void BtSave_Click(object sender, RoutedEventArgs e)
         {
             SpecialtyInformation newSpecialtyInformation;
-
             if (cbSpecialty.SelectedIndex <0  || cbFormOfEducation.SelectedIndex<0)
             {
                 MessageForms.MessageForms.MessageBoxMessage("Выберите специальность и форму обучения");
                 return;
             }
-
             if ((rbBase.IsChecked.Value== false && rbNoBase.IsChecked.Value==false )
                 || (rbBase.IsChecked == null || rbNoBase.IsChecked == null)
                 )
@@ -159,8 +155,6 @@ namespace Personnel_Department.Forms.AdditionalForms
                 MessageForms.MessageForms.MessageBoxMessage("Выберите профиль(базовый или углубленный)");
                 return;
             }
-
-
             try
             {
                 newSpecialtyInformation = CreateUser();
@@ -176,7 +170,6 @@ namespace Personnel_Department.Forms.AdditionalForms
 
         private SpecialtyInformation CreateUser()
         {
-          
             try
             {
                return  new SpecialtyInformation
