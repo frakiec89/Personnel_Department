@@ -22,10 +22,10 @@ namespace Personnel_Department.Controllers
 
         public static string CreateOrUpdateSpecialtyInformation(SpecialtyInformation uSpecialtyInformation)
         {
-            using ApplicationContext applicationContext = new();
-            if (applicationContext.SpecialtyInformation.Contains(uSpecialtyInformation)) //TODO: Сделать проверку объектов
-                return "Такой объект уже есть";
+            var u = uSpecialtyInformation;
 
+            using ApplicationContext applicationContext = new();
+            
             try
             {
                 applicationContext.SpecialtyInformation.Update(uSpecialtyInformation);

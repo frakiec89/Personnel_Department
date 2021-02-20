@@ -8,10 +8,10 @@
         Title="Список специальностей" Height="450" Width="800" Loaded="Window_Loaded" Icon="/Forms/Icon.ico">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="13*"/>
-            <RowDefinition Height="204*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="391*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="lbMain" Grid.Row="1" MouseDoubleClick="lbMain_MouseDoubleClick" >
+        <ListBox x:Name="lbMain" MouseDoubleClick="lbMain_MouseDoubleClick" Margin="0,35,0,0" Grid.RowSpan="2" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid  >
@@ -36,9 +36,9 @@
                             <Label  Margin="1,1,1,1">)</Label>
                             <Label Content="{Binding Name}" Margin="10,1,1,1"/>
                         </StackPanel>
-                        
+
                         <StackPanel  Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
-                            <Label  Margin="10,1,1,1">Направление: </Label>
+                            <Label  Margin="10,1,1,1">Направление:</Label>
                             <Label Content="{Binding Directions.Name}"
                                Margin="1,1,1,1"></Label>
                         </StackPanel>
@@ -46,9 +46,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Content="Назад" Click="Back_Click"/>
-            <Button Content="Добавить" Margin="110,0,0,0" Click="CreateSpecialty_Click" Width="272"/>
+        <StackPanel Margin="2,2,2,2" Orientation="Horizontal" Grid.Row="0">
+            <Button Margin="2"  Content="Назад" Click="Back_Click"/>
+            <Button Content="Добавить" Margin="110,2,2,0" Click="CreateSpecialty_Click" Width="272"/>
         </StackPanel>
     </Grid>
 </Window>
