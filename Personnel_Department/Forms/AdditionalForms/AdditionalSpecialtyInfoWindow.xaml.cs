@@ -71,14 +71,20 @@ namespace Personnel_Department.Forms.AdditionalForms
             btSave.Visibility = Visibility.Visible;
             lbFormOfEducationC.Visibility = Visibility.Collapsed;
             tbTrainingPeriodM.Visibility = Visibility.Collapsed;
+            tbTrainingPeriodM.MinWidth = 20; // минимальный размер окна
+            tbTrainingPeriodM.HorizontalContentAlignment = HorizontalAlignment.Center;
             lbBaseNoBase.Visibility = Visibility.Collapsed;
             lbTrainingPeriodC.Visibility = Visibility.Collapsed;
             lbBaseNoBase.Visibility = Visibility.Collapsed;
             tbTrainingPeriodM.Visibility = Visibility.Visible;
             tbTrainingPeriodY.Visibility = Visibility.Visible;
+            tbTrainingPeriodY.MinWidth = 20; //минимальный размер окна
+            tbTrainingPeriodY.HorizontalContentAlignment = HorizontalAlignment.Center;
             lbTrainingPeriodC.Visibility = Visibility.Collapsed;
             tbTrainingPeriodY.Text = selectedSpecialty.TrainingPeriod.Year.ToString();
             tbTrainingPeriodM.Text = selectedSpecialty.TrainingPeriod.Month.ToString();
+            lbM.Visibility = Visibility.Visible; lbY.Visibility = Visibility.Visible;
+
             #endregion
         }
 
@@ -124,6 +130,11 @@ namespace Personnel_Department.Forms.AdditionalForms
         {
             Title = "Создание профиля";
             btSave.Visibility = Visibility.Visible;
+            tbTrainingPeriodM.MinWidth = 20; // минимальный размер окна
+            tbTrainingPeriodM.HorizontalContentAlignment = HorizontalAlignment.Center;
+            tbTrainingPeriodY.MinWidth = 20; //минимальный размер окна
+            tbTrainingPeriodY.HorizontalContentAlignment = HorizontalAlignment.Center;
+            lbM.Visibility = Visibility.Visible; lbY.Visibility = Visibility.Visible;
         }
         protected override void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -134,6 +145,22 @@ namespace Personnel_Department.Forms.AdditionalForms
         protected override void BtSave_Click(object sender, RoutedEventArgs e)
         {
             SpecialtyInformation newSpecialtyInformation;
+
+            if (cbSpecialty.SelectedIndex <0  || cbFormOfEducation.SelectedIndex<0)
+            {
+                MessageForms.MessageForms.MessageBoxMessage("Выберите специальность и форму обучения");
+                return;
+            }
+
+            if ((rbBase.IsChecked.Value== false && rbNoBase.IsChecked.Value==false )
+                || (rbBase.IsChecked == null || rbNoBase.IsChecked == null)
+                )
+            {
+                MessageForms.MessageForms.MessageBoxMessage("Выберите профиль(базовый или углубленный)");
+                return;
+            }
+
+
             try
             {
                 newSpecialtyInformation = CreateUser();
@@ -145,16 +172,26 @@ namespace Personnel_Department.Forms.AdditionalForms
             }
             MessageBox.Show(SpecialtyInfoController.CreateOrUpdateSpecialtyInformation(newSpecialtyInformation));
             Close();
+        }
 
-            SpecialtyInformation CreateUser() =>
-                                new SpecialtyInformation
-                                (
-                                    ((Specialty)cbSpecialty.SelectedItem).SpecialtyId,
-                                    tbName.Text,
-                                    GetValueRadioButton(),
-                                    ((FormOfEducation)cbFormOfEducation.SelectedItem).FormOfEducationId,
-                                    tbTrainingPeriodY.Text, tbTrainingPeriodM.Text
-                                 );
+        private SpecialtyInformation CreateUser()
+        {
+          
+            try
+            {
+               return  new SpecialtyInformation
+                (
+                    ((Specialty)cbSpecialty.SelectedItem).SpecialtyId,
+                    tbName.Text,
+                    GetValueRadioButton(),
+                    ((FormOfEducation)cbFormOfEducation.SelectedItem).FormOfEducationId,
+                    tbTrainingPeriodY.Text, tbTrainingPeriodM.Text
+                 );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
