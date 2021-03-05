@@ -35,5 +35,45 @@ namespace Personnel_Department.Controllers
                 return ex.Message;
             }
         }
+        /// <summary>
+        /// Удаление по всему объекту
+        /// </summary>
+        /// <param name="specialtyInformation">наш объект</param>
+        /// <returns></returns>
+        public static string Delete(SpecialtyInformation specialtyInformation)
+        {
+            if (specialtyInformation is null)
+                return "Ошибка, пустота";
+            try
+            {
+                using ApplicationContext context = new();
+                context.SpecialtyInformation.Remove(specialtyInformation);
+                context.SaveChanges();
+                return "Удаление прошло успешно";
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        /// <summary>
+        /// Удаление по Id
+        /// </summary>
+        /// <param name="idSpecialtyInformation">Id объекта</param>
+        /// <returns></returns>
+        public static string Delete(int idSpecialtyInformation)
+        {
+            try
+            {
+                using ApplicationContext context = new();
+                context.SpecialtyInformation.Remove(context.SpecialtyInformation.Single(x => x.SpecialtyinformationId == idSpecialtyInformation));
+                context.SaveChanges();
+                return "Удаление прошло успешно";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 }

@@ -47,6 +47,7 @@
             </StackPanel>
                 <Button Margin="5" Padding="5" x:Name="btSave" Content="Сохранить" Grid.Row="1" Visibility="Hidden" Click="BtSave_Click"/>
             <Button  Margin="5" Padding="5" x:Name="btEdit" Content="Редактировать" Grid.Row="1" Visibility="Hidden" Click="BtEdit_Click"/>
+            <Button Margin="5" Padding="5" x:Name="btDelete" Content="Удалить" Grid.Row="1" Visibility="Hidden" Click="BtDelete_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -18,6 +18,7 @@ namespace Personnel_Department.Forms.AdditionalForms
         {
             SelectedSpecialty = selectedSpecialty;
             #region Настройка интерфейса
+            btDelete.Visibility = Visibility.Visible;
             lbNameCon.Visibility = Visibility.Visible;
             lbSpecialtyC.Visibility = Visibility.Visible;
             cbSpecialty.Visibility = Visibility.Collapsed;
@@ -44,8 +45,10 @@ namespace Personnel_Department.Forms.AdditionalForms
         private void BtEdit_Click(object sender, RoutedEventArgs e)
         {
             AdditionalSpecialtyInfoEditWindow window = new AdditionalSpecialtyInfoEditWindow(SelectedSpecialty);
-            window.Show();
-            Close();
+            if ((bool)window.ShowDialog())
+                Close();
+
+          
         }
         protected string GetValueRadioButton()
         {
@@ -54,6 +57,9 @@ namespace Personnel_Department.Forms.AdditionalForms
             else
                 return (string)rbNoBase.Content;
         }
+
+        private void BtDelete_Click(object sender, RoutedEventArgs e) => SpecialtyInfoController.Delete(SelectedSpecialty);
+
     }
 
     /// <summary>

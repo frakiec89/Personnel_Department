@@ -14,6 +14,7 @@ namespace Personnel_Department.Forms
         public SpecialtyInfoWindow() => InitializeComponent();
 
         private void UpdateDb() => lbMain.ItemsSource = new Controllers.SpecialtyInfoController().SpecialtyInformation;
+      
         private void Window_Loaded(object sender, RoutedEventArgs e) => UpdateDb();
 
         private void Back_Click(object sender, RoutedEventArgs e)
