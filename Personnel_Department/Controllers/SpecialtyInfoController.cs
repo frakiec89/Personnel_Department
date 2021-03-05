@@ -22,8 +22,6 @@ namespace Personnel_Department.Controllers
 
         public static string CreateOrUpdateSpecialtyInformation(SpecialtyInformation uSpecialtyInformation)
         {
-            var u = uSpecialtyInformation;
-
             using ApplicationContext applicationContext = new();
             
             try

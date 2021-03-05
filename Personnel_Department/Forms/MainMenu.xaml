@@ -19,7 +19,7 @@
             <Button x:Name="btDeparments" Content="Список Отделений" Margin="15,15,15,15" Click="BtDeparments_Click"/>
             <Button x:Name="btDeiraction" Content="Список Направлений" Margin="15,15,15,15" Click="BtDeiraction_Click"/>
             <Button x:Name="btSpecialty" Content="Список специальностей" Margin="15,15,15,15" Click="BtSpecialty_Click"/>
-            <Button x:Name="btSpecialtyInfo" Content="SpecialtyInfo" Margin="15,15,15,15" Click="BtSpecialty_Click_1"/>
+            <Button x:Name="btSpecialtyInfo" Content="Профили" Margin="15,15,15,15" Click="BtSpecialty_Click_1"/>
         </StackPanel>
     </Grid>
 </Window>

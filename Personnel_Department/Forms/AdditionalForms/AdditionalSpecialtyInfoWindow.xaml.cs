@@ -108,14 +108,17 @@ namespace Personnel_Department.Forms.AdditionalForms
                 SelectedSpecialty.BaseEndNoBase = GetValueRadioButton();
                 SelectedSpecialty.FormOfEducationId = ((FormOfEducation)cbFormOfEducation.SelectedItem).FormOfEducationId;
                 SelectedSpecialty.SpecialtyId = ((Specialty)cbSpecialty.SelectedItem).SpecialtyId;
+                SelectedSpecialty.TrainingPeriod = new DateTime(Convert.ToInt32(tbTrainingPeriodY.Text), Convert.ToInt32(tbTrainingPeriodM.Text), 1);
+
+
+                MessageBox.Show(SpecialtyInfoController.CreateOrUpdateSpecialtyInformation(SelectedSpecialty));
+                Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return;
             }
-            MessageBox.Show(SpecialtyInfoController.CreateOrUpdateSpecialtyInformation(SelectedSpecialty));
-            Close();
         }
     }
 

@@ -76,7 +76,7 @@ namespace Personnel_Department.BL.ModelDataBase
         /// <summary>
         /// Срок  обучения , например  4 года 10 месяцев
         /// </summary>
-        public System.DateTime TrainingPeriod { get; set; }
+        public DateTime TrainingPeriod { get; set; }
         [NotMapped]
         public virtual string GetTrainingPeriod { get => TrainingPeriod.Year.ToString() + " г." + ' ' + TrainingPeriod.Month.ToString() + " м. "; }
         public int FormOfEducationId { get; set; }

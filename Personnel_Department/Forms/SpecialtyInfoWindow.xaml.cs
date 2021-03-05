@@ -32,19 +32,19 @@ namespace Personnel_Department.Forms
 
        
 
-        private void lbMain_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void LbMain_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
             {
                 if (lbMain.SelectedIndex >= 0 )
                 {
                     AdditionalSpecialtyInfoWindow window =
-                    new AdditionalForms.AdditionalSpecialtyInfoWindow((SpecialtyInformation)lbMain.SelectedItem);
+                    new AdditionalSpecialtyInfoWindow((SpecialtyInformation)lbMain.SelectedItem);
                     window.ShowDialog();
                     UpdateDb();
                 }
             }
-            catch(Exception ex)       { MessageForms.MessageForms.MessageBoxMessage(ex.Message); }
+            catch(Exception ex) { MessageForms.MessageForms.MessageBoxMessage(ex.Message); }
         }
     }
 }

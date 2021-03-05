@@ -11,7 +11,7 @@
             <RowDefinition Height="37*"/>
             <RowDefinition Height="397*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="lbMain" Grid.Row="1" MouseDoubleClick="lbMain_MouseDoubleClick">
+        <ListBox x:Name="lbMain" Grid.Row="1" MouseDoubleClick="LbMain_MouseDoubleClick">
             <ListBox.ItemTemplate >
                 <DataTemplate>
                     <Grid >
